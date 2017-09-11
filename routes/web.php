@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('front.home');
 });
 
+Route::get('/test', function () {
+    return view('auth.login_test');
+});
+
 
 Auth::routes();
 

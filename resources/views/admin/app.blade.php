@@ -21,9 +21,11 @@
     <link href="{{ asset('admin_tmpl/css/morris.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
-    <link href="{{ asset('admin_tmpl/css/components.min.css') }}" rel="stylesheet" id="style_components"
+    <link href="{{ asset('admin_tmpl/css/components.css') }}" rel="stylesheet" id="style_components"
           type="text/css"/>
     <link href="{{ asset('admin_tmpl/css/plugins.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('admin_tmpl/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('admin_tmpl/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="{{ asset('admin_tmpl/css/layout.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -87,6 +89,7 @@
     <script src="{{ asset('admin_tmpl/js/jquery.easypiechart.min.js') }}"
             type="text/javascript"></script>
     <script src="{{ asset('admin_tmpl/js/jquery.sparkline.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('admin_tmpl/js/select2.full.min.js') }}" type="text/javascript"></script>
 
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
