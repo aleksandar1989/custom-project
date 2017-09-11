@@ -12,11 +12,19 @@
 */
 
 Route::get('/', function () {
-
-    return view('admin.home');
-
+    return view('front.home');
 });
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group([
+    'namespace' => 'Admin',
+    'prefix' => 'admin',
+    'middleware' => 'auth'
+], function() {
+    // Admin Dashboard
+    Route::get('/', 'HomeController@index');
+
+});
