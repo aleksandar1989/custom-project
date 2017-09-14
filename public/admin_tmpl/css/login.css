@@ -3,7 +3,9 @@
 Login page
 ***/
 /* logo page */
-
+a{
+  color: #27B3ED;
+}
 .login .logo {
   margin: 60px auto 20px auto;
   padding: 15px;
@@ -44,11 +46,6 @@ Login page
 .login .content .form-control {
   background-color: #fff; }
 
-.login .content .forget-form {
-  display: none; }
-
-.login .content .register-form {
-  display: none; }
 
 .login .content .form-title {
   font-weight: 300;
@@ -120,6 +117,10 @@ Login page
   padding: 10px;
   color: #eee;
   font-size: 13px; }
+
+.register-form .form-actions, .reset-form .form-actions{
+  text-align: right;
+}
 
 @media (max-width: 480px) {
   /***
