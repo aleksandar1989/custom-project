@@ -17,10 +17,10 @@
             <!-- BEGIN LOGIN FORM -->
             <form class="login-form" action="{{ route('login') }}" method="post">
                 {{ csrf_field() }}
-                <h3 class="form-title">Login to your account</h3>
+                <h3 class="form-title">{{ __('app.Login to your account') }}</h3>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>
-                    <span> Enter any username and password. </span>
+                    <span> {{ __('app.Enter any username and password.') }} </span>
                 </div>
                 <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->

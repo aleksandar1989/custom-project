@@ -13,8 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    Welcome!
+                        {{ trans('app.Welcome') }}
                 </div>
             </div>
         </div>
