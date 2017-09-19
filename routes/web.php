@@ -11,14 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.home');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('/test', function () {
-    return view('auth.login_test');
-});
+//  Language route
+Route::post('/language-chooser', 'LanguageController@changeLanguage');
 
+Route::post('/language/', array(
+        'before' => 'csrf',
+        'as' => 'language-chooser',
+        'uses' => 'LanguageController@changeLanguage'
+    )
+);
 
 Auth::routes();
 
