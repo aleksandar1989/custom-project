@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
     use Notifiable;
 
     /**
@@ -76,4 +77,34 @@ class User extends Authenticatable
     }
       return false;
     }
+
+    /**
+     * Get user metas
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function metas() {
+        return $this->hasMany(UserMeta::class);
+    }
+
+    /**
+     * Get post meta value by key
+     * @param $key
+     * @return mixed
+     */
+    public function meta($key) {
+        return $this->hasMany(UserMeta::class)->where('meta_key', $key)->first()->meta_value;
+    }
+
+    /**
+     * Set user meta
+     * @param $key
+     * @param $value
+     */
+    public function setMeta($key, $value) {
+        $new_meta = new UserMeta(['meta_key' => $key, 'meta_value' => $value]);
+        return $this->metas()->save($new_meta);
+
+    }
+
+
 }
