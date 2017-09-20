@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -44,9 +47,9 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function redirectToProvider()
+    public function redirectToProvider($service)
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver($service)->redirect();
     }
 
     /**
@@ -54,10 +57,25 @@ class LoginController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($service)
     {
-        $user = Socialite::driver('facebook')->user();
+        $social_user = Socialite::driver($service)->user();
 
-        return $user->name;
+        $find_user = User::where('email', $social_user->email)->first();
+
+        if($find_user){
+            Auth::login($find_user);
+        } else {
+            $new_user = new User;
+            $new_user->name = $social_user->name;
+            $new_user->email = $social_user->email;
+            $new_user->password = bcrypt($social_user->id);
+            $new_user->save();
+
+            $new_user->setMeta('social_password', $social_user->id);
+            Auth::login($new_user);
+        }
+        return Redirect::to('/');
+
     }
 }

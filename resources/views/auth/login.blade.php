@@ -56,7 +56,7 @@
                     <h4>Or login with</h4>
                     <ul class="social-icons">
                         <li>
-                            <a class="facebook" data-original-title="facebook" href="javascript:;"> </a>
+                            <a class="facebook" data-original-title="facebook" href="/login/facebook"> </a>
                         </li>
                         <li>
                             <a class="twitter" data-original-title="Twitter" href="javascript:;"> </a>
