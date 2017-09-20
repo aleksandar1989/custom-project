@@ -35,3 +35,7 @@ Route::group([
     Route::get('/', 'HomeController@index');
 
 });
+
+//facebook socialite.
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

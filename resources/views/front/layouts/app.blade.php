@@ -44,6 +44,7 @@
                                 <li><a href="#" name="en" class="language">EN</a></li>
                                 <li><a href="#" name="sr" class="language">SR</a></li>
                             </ul>
+                            {{ csrf_field() }}
 
                         </li>
                     </ul>
@@ -83,7 +84,6 @@
                 </div>
             </div>
         </nav>
-        {{ csrf_field() }}
         @yield('content')
     </div>
 
