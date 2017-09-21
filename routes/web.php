@@ -29,7 +29,7 @@ Auth::routes();
 Route::group([
     'namespace' => 'Admin',
     'prefix' => 'admin',
-    'middleware' => 'auth'
+    'middleware' => 'admin'
 ], function() {
     // Admin Dashboard
     Route::get('/', 'HomeController@index');
