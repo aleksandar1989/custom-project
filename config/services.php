@@ -41,4 +41,16 @@ return [
         'redirect' => env('FACEBOOK_LOGIN_URL'),
     ],
 
+    'twitter' => [
+        'client_id' => 'guCrEqbp5bKMs3PeXaXZnUHVZ',
+        'client_secret' => 'fxcKt1O5sJ4LmgxUjMG5VXB60XFi6VzlAJWn4HZi5KFc7npdVi',
+        'redirect' => env('TWITTER_LOGIN_URL'),
+    ],
+
+    'google' => [
+        'client_id' => '872501363407-m91e3l9bre2sdfvospaekrs960pu5dh0.apps.googleusercontent.com',
+        'client_secret' => '1WUZp0rB1W4WpAGGE86h1QyH',
+        'redirect' => env('GOOGLE_LOGIN_URL'),
+    ],
+
 ];
