@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Laracus | Admin Panel</title>
+    <title>Laracus | @yield(('title'))</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Csrf token -->
@@ -32,6 +32,7 @@
     <link href="{{ asset('admin_tmpl/css/darkblue.min.css') }}" rel="stylesheet" type="text/css"
           id="style_color"/>
     <link href="{{ asset('admin_tmpl/css/custom.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('admin_tmpl/css/style.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="{{ asset('admin_tmpl/images/favicon.png') }}"/>
 
@@ -62,7 +63,6 @@
             <!-- END QUICK SIDEBAR -->
         </div>
         <!-- END CONTAINER -->
-        @include('admin.partials.footer')
     </div>
 
     <!-- BEGIN CORE PLUGINS -->
@@ -103,6 +103,7 @@
     <script src="{{ asset('admin_tmpl/js/demo.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin_tmpl/js/quick-sidebar.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin_tmpl/js/quick-nav.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('admin_tmpl/js/table-datatables-colreorder.min.js') }}" type="text/javascript"></script>
     @yield('footer')
 </body>
 

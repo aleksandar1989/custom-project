@@ -32,7 +32,7 @@
                     </a>
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
+                        <span class="input-group-btn">
                                             <a href="javascript:;" class="btn submit">
                                                 <i class="icon-magnifier"></i>
                                             </a>
@@ -41,16 +41,29 @@
                 </form>
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
             </li>
-            <li class="nav-item start active open">
-                <a href="javascript:;" class="nav-link nav-toggle">
+            <li class="nav-item start {{ Request::path() == 'admin' ? 'active' : '' }}">
+                <a href="{{ url('admin') }}" class="nav-link nav-toggle">
                     <i class="icon-home"></i>
                     <span class="title">Dashboard</span>
                     <span class="selected"></span>
-                    <span class="arrow"></span>
                 </a>
 
             </li>
-
+            <li class="nav-item {{ Request::path() == 'admin/users' ? 'active open' : '' }}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-users"></i>
+                    <span class="title">Users</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  {{ Request::path() == 'admin/users' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/users') }}" class="nav-link ">
+                            <i class="fa fa-users"></i>
+                            <span class="title">Manage Users</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
         </ul>
         <!-- END SIDEBAR MENU -->

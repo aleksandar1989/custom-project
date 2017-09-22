@@ -33,6 +33,8 @@ Route::group([
 ], function() {
     // Admin Dashboard
     Route::get('/', 'HomeController@index');
+    // Admin Users
+    Route::resource('/users', 'UsersController');
 
 });
 

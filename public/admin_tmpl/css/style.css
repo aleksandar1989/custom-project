@@ -1,0 +1,17 @@
+#users_table thead tr th:after{
+    display: none;
+}
+.label-success{
+    background: #26C281;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+    background: #36c6d3;
+    border-color: #ddd;
+}
+.pagination>li>a, .pagination>li>span{
+    color: #2C3E50;
+}
+.users_listing_page .add_user_box{
+    margin: 10px 0;
+}

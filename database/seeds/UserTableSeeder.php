@@ -20,6 +20,7 @@ class UserTableSeeder extends Seeder
         $employee->name = 'Aleksandar Markovic';
         $employee->email = 'aleksandar.markovic@smartweb.rs';
         $employee->password = bcrypt('idemo123');
+        $employee->status = 1;
         $employee->save();
         $employee->roles()->attach($role_admin);
 
@@ -27,6 +28,7 @@ class UserTableSeeder extends Seeder
         $employee->name = 'Aleksandar Radojicic';
         $employee->email = 'aleksandar.radojicic@smartweb.rs';
         $employee->password = bcrypt('idemo123');
+        $employee->status = 1;
         $employee->save();
         $employee->roles()->attach($role_guest);
     }

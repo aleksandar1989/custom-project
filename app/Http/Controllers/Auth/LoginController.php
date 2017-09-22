@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -87,8 +88,10 @@ class LoginController extends Controller
             $new_user->name = $social_user->name;
             $new_user->email = $social_user->email;
             $new_user->password = bcrypt($social_user->id);
+            $new_user->status = 1;
             $new_user->save();
 
+            $new_user->roles()->attach(Role::where('name', 'guest')->first());
             $new_user->setMeta('social_password', $social_user->id);
             Auth::login($new_user);
         }
