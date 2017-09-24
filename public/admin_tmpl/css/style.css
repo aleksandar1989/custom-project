@@ -15,3 +15,17 @@
 .users_listing_page .add_user_box{
     margin: 10px 0;
 }
+.user_create_page .portlet{
+    max-width: 600px;
+}
+.note-danger ul{
+    margin-bottom: 0px;
+    color: #f0868e;
+}
+.user_create_page .avatar_box{
+    margin-bottom: 0px;
+    width: 100%;
+}
+.user_create_page #role{
+    text-transform: capitalize;
+}
