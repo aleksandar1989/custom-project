@@ -49,7 +49,7 @@
                 </a>
 
             </li>
-            <li class="nav-item {{ Request::path() == 'admin/users' ? 'active open' : '' }}">
+            <li class="nav-item {{ (Request::path() == 'admin/users' || Request::path() == 'admin/users/create') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-users"></i>
                     <span class="title">Users</span>
@@ -60,6 +60,12 @@
                         <a href="{{ url('admin/users') }}" class="nav-link ">
                             <i class="fa fa-users"></i>
                             <span class="title">Manage Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  {{ Request::path() == 'admin/users/create' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/users/create') }}" class="nav-link ">
+                            <i class="fa fa-user"></i>
+                            <span class="title">Add New User</span>
                         </a>
                     </li>
                 </ul>

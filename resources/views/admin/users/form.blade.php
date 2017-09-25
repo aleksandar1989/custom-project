@@ -16,6 +16,10 @@
     {!! Form::select('role', $roles, null, ['class' => 'form-control', 'id' => 'role',  'placeholder' => 'Choose user role...']) !!}
 </div>
 <div class="form-group">
+    <label>User status</label>
+    {!! Form::select('status', [ '1' => 'Active', '2' => 'Panding', '3' => 'Blocked' ], null, ['class' => 'form-control', 'id' => 'role']) !!}
+</div>
+<div class="form-group">
     <label for="Password">Password</label>
     <div class="input-group">
         {!! Form::input('password', 'password', null, ['class' => 'form-control', 'id' => 'password', 'placeholder' => 'Enter password...']) !!}
@@ -33,6 +37,7 @@
         </span>
     </div>
 </div>
+
 <div class="form-group">
     <label for="avatar">Avatar</label>
     <div class="fileinput fileinput-new avatar_box" data-provides="fileinput">

@@ -32,7 +32,16 @@ class UsersController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserValidation $request) {
-        return $request->all();
+        $user = User::create([
+            'name' => $request->input('username'),
+            'email' => $request->input('email'),
+            'status' => $request->input('status'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        if($user){
+
+        }
     }
 
     /**
