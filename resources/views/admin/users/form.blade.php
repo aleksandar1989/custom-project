@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>User Name</label>
-    {!! Form::text('username', null, ['class' => 'form-control', 'id' => 'username', 'placeholder' => 'Enter your name...']) !!}
+    {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name', 'placeholder' => 'Enter your name...']) !!}
 </div>
 <div class="form-group">
     <label>Email Address</label>
@@ -13,7 +13,7 @@
 </div>
 <div class="form-group">
     <label>User role</label>
-    {!! Form::select('role', $roles, null, ['class' => 'form-control', 'id' => 'role',  'placeholder' => 'Choose user role...']) !!}
+    {!! Form::select('role', $roles, isset($user) ? $user->roles->pluck('id')->toArray() : null, ['class' => 'form-control', 'id' => 'role',  'placeholder' => 'Choose user role...']) !!}
 </div>
 <div class="form-group">
     <label>User status</label>

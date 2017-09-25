@@ -25,10 +25,11 @@ class UserValidation extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|max:255',
+            'name' => 'required|max:255',
             'role' => 'required',
             'email' => 'required|email|max:255|unique:users,email,' . Input::get('id'),
             'password' => 'confirmed|min:6',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ];
     }
 }

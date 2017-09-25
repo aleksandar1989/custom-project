@@ -75,8 +75,8 @@
                                             </button>
                                             <ul class="dropdown-menu pull-left" role="menu">
                                                 <li>
-                                                    <a href="javascript:;">
-                                                        <i class="icon-docs"></i> New Post </a>
+                                                    <a href="{{ url("admin/users/$user->id/edit") }}">
+                                                        <i class="fa fa-file-text"></i> Edit User </a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:;">

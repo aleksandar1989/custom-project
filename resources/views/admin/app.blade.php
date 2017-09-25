@@ -19,6 +19,7 @@
     <link href="{{ asset('admin_tmpl/css/daterangepicker.min.css') }}" rel="stylesheet"
           type="text/css"/>
     <link href="{{ asset('admin_tmpl/css/morris.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('admin_tmpl/css/toastr.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="{{ asset('admin_tmpl/css/components.css') }}" rel="stylesheet" id="style_components"
@@ -90,6 +91,7 @@
             type="text/javascript"></script>
     <script src="{{ asset('admin_tmpl/js/jquery.sparkline.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin_tmpl/js/select2.full.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('admin_tmpl/js/toastr.min.js') }}" type="text/javascript"></script>
 
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
@@ -105,6 +107,8 @@
     <script src="{{ asset('admin_tmpl/js/quick-nav.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin_tmpl/js/table-datatables-colreorder.min.js') }}" type="text/javascript"></script>
     @yield('footer')
+
+    @include('admin.notification.alert')
 </body>
 
 </html>
