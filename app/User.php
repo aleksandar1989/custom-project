@@ -15,7 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $guarded = ['id', 'remember_token'];
+    protected $fillable = ['name', 'email', 'status', 'password', 'token'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -78,6 +78,7 @@ class User extends Authenticatable
       return false;
     }
 
+
     /**
      * Get user metas
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -92,7 +93,8 @@ class User extends Authenticatable
      * @return mixed
      */
     public function meta($key) {
-        return $this->hasMany(UserMeta::class)->where('meta_key', $key)->first()->meta_value;
+        $meta_data = $this->hasMany(UserMeta::class)->where('meta_key', $key)->first();
+        return $meta_data ? $meta_data->meta_value : false;
     }
 
     /**

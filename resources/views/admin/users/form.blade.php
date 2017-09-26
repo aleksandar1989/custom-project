@@ -19,6 +19,7 @@
     <label>User status</label>
     {!! Form::select('status', [ '1' => 'Active', '2' => 'Panding', '3' => 'Blocked' ], null, ['class' => 'form-control', 'id' => 'role']) !!}
 </div>
+
 <div class="form-group">
     <label for="Password">Password</label>
     <div class="input-group">
@@ -28,6 +29,7 @@
         </span>
     </div>
 </div>
+
 <div class="form-group">
     <label for="password_confirmation">Password Confirm</label>
     <div class="input-group">
@@ -55,3 +57,7 @@
         </div>
     </div>
 </div>
+
+@if(isset($user) && $user->meta('avatar'))
+    <img src="{{ $user->meta('avatar') }}" alt="{{ $user->name }}" height="100" />
+@endif

@@ -49,9 +49,10 @@ class UsersController extends Controller
             if ($request->file('avatar')) {
                 $image = $request->file('avatar');
                 $image_name ='avatar-'.$user->id.'.'.$image->getClientOriginalExtension();
+                // get folder path
                 $destinationPath = public_path('/images/users/');
                 $image->move($destinationPath, $image_name);
-                $user->setMeta('avatar', $image_name);
+                $user->setMeta('avatar', '/images/users/'.$image_name);
             }
             $notification = array(
                 'message' => 'User is created successfully!',
@@ -86,8 +87,54 @@ class UsersController extends Controller
      * Update user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, UserRequest $request)
+    public function update($id, UserValidation $request)
     {
+        // get user by id
+        $user = User::findOrFail($id);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->status = $request->input('status');
+
+        if($request->input('password')){
+            $user->password = bcrypt($request->input('password'));
+        }
+
+        $request = $request->except(['password']);
+        if($user->save()) {
+            $user->roles()->sync($request->input('roles'));
+
+            $image = $request->file('avatar');
+
+            // upload avatar
+            if($image) {
+                //  delete old avatar
+                if($user->meta('avatar')) {
+                    unlink($user->meta('avatar'));
+                }
+
+                $image_name ='avatar-'.$user->id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/users/');
+
+                $user->setMeta('avatar', '/images/users/'.$image_name);
+                $image->move($destinationPath, $image_name);
+                $user->setMeta('avatar', '/images/users/'.$image_name);
+            }
+
+            $notification = array(
+                'message' => 'User is  successfully updated!',
+                'type' => 'success'
+            );
+
+        } else{
+            $notification = array(
+                'message' => 'User doesn\'t update!',
+                'type' => 'error'
+            );
+
+        }
+
+        return redirect()->back()->with($notification);
 
     }
 

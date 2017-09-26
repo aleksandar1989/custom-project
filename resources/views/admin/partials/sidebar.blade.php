@@ -41,6 +41,7 @@
                 </form>
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
             </li>
+
             <li class="nav-item start {{ Request::path() == 'admin' ? 'active' : '' }}">
                 <a href="{{ url('admin') }}" class="nav-link nav-toggle">
                     <i class="icon-home"></i>
@@ -49,7 +50,8 @@
                 </a>
 
             </li>
-            <li class="nav-item {{ (Request::path() == 'admin/users' || Request::path() == 'admin/users/create') ? 'active open' : '' }}">
+
+            <li class="nav-item {{ (Request::path() == 'admin/users' || Request::is('admin/users/*')) ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-users"></i>
                     <span class="title">Users</span>

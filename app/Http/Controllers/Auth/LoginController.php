@@ -93,6 +93,7 @@ class LoginController extends Controller
 
             $new_user->roles()->attach(Role::where('name', 'guest')->first());
             $new_user->setMeta('social_password', $social_user->id);
+            $new_user->setMeta('avatar', $social_user->avatar);
             Auth::login($new_user);
         }
         return Redirect::to('/');
