@@ -35,6 +35,7 @@ class UsersController extends Controller
      */
     public function store(UserValidation $request)
     {
+
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -43,6 +44,7 @@ class UsersController extends Controller
         ]);
 
         if ($user) {
+
             // sync roles
             $user->roles()->sync($request->input('role'));
             // upload avatar
@@ -87,7 +89,7 @@ class UsersController extends Controller
      * Update user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id, UserValidation $request)
+    public function update(UserValidation $request, $id)
     {
         // get user by id
         $user = User::findOrFail($id);
@@ -100,23 +102,21 @@ class UsersController extends Controller
             $user->password = bcrypt($request->input('password'));
         }
 
-        $request = $request->except(['password']);
-        if($user->save()) {
-            $user->roles()->sync($request->input('roles'));
+        if($user->update()) {
+            $user->roles()->sync($request->input('role'));
 
             $image = $request->file('avatar');
 
             // upload avatar
             if($image) {
                 //  delete old avatar
-                if($user->meta('avatar')) {
-                    unlink($user->meta('avatar'));
+                if( $user->meta('avatar') && file_exists(public_path($user->meta('avatar'))) ) {
+                    unlink(public_path($user->meta('avatar')));
                 }
+                $user->unsetMeta('avatar');
 
                 $image_name ='avatar-'.$user->id.'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/images/users/');
-
-                $user->setMeta('avatar', '/images/users/'.$image_name);
                 $image->move($destinationPath, $image_name);
                 $user->setMeta('avatar', '/images/users/'.$image_name);
             }
@@ -138,14 +138,34 @@ class UsersController extends Controller
 
     }
 
+
     /**
      * Delete user
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
+        // get user
+        $user = User::findOrFail($id);
 
+        if($user->delete()) {
+            //  delete avatar
+            if( $user->meta('avatar') && file_exists(public_path($user->meta('avatar'))) ) {
+                unlink(public_path($user->meta('avatar')));
+            }
+            $user->unsetMeta('avatar');
+
+            $message = [
+                'message' => 'User has been deleted.',
+                'type' => 'success'
+            ];
+        } else {
+            $message = [
+                'message' => 'User has not been deleted.',
+                'type' => 'danger'
+            ];
+        }
+
+        return redirect()->back()->with($message);
     }
-
 }

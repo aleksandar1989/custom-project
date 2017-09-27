@@ -79,8 +79,14 @@
                                                         <i class="fa fa-file-text"></i> Edit User </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:;">
-                                                        <i class="icon-tag"></i> New Comment </a>
+                                                    @if($user->id != 1)
+                                                        <a href="javascript:void(0);" onclick="userDelete(this);" >
+                                                        {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id]]) !!}
+                                                        <i class="fa fa-trash"></i> Delete User
+                                                        {!! Form::close() !!}
+                                                        </a>
+                                                    @endif
+
                                                 </li>
                                             </ul>
                                         </div>

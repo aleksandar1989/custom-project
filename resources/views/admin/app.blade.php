@@ -106,6 +106,7 @@
     <script src="{{ asset('admin_tmpl/js/quick-sidebar.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin_tmpl/js/quick-nav.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('admin_tmpl/js/table-datatables-colreorder.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('admin_tmpl/js/custom.js') }}" type="text/javascript"></script>
     @yield('footer')
 
     @include('admin.notification.alert')

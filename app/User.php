@@ -15,7 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'status', 'password', 'token'];
+    protected $fillable = ['name', 'email', 'status', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -107,6 +107,15 @@ class User extends Authenticatable
         return $this->metas()->save($new_meta);
 
     }
+    /**
+     * Unset user meta
+     * @param $key
+     */
+    public function unsetMeta($key) {
+        return UserMeta::where( 'user_id', $this->id )->where('meta_key', $key)->delete();
+
+    }
+
 
 
 }
