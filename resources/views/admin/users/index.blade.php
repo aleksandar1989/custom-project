@@ -18,9 +18,7 @@
         <div class="clearfix add_user_box">
             <div class="col-md-6">
                 <div class="btn-group">
-                    <a href="{{ url('/admin/users/create') }}" class="btn sbold green"> Add New User
-                        <i class="fa fa-plus"></i>
-                    </a>
+                    <a href="{{ url('/admin/users/create') }}" class="btn sbold green"><i class="fa fa-plus"></i> Add New User</a>
                 </div>
             </div>
         </div>

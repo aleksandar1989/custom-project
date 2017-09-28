@@ -17,7 +17,6 @@
         <!-- BEGIN SAMPLE FORM PORTLET-->
         <div class="portlet light bordered">
             <div class="portlet-body form">
-                <!-- form start -->
                 {!! Form::open(['url' => 'admin/users', 'files' => true]) !!}
 
                     <div class="form-body">
@@ -26,7 +25,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn green">Submit</button>
+                        <button type="submit" class="btn green">Save</button>
                     </div>
                 {!! Form::close() !!}
 
