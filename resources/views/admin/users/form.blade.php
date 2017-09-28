@@ -44,7 +44,7 @@
     <label for="avatar">Avatar</label>
     <div class="fileinput fileinput-new avatar_box" data-provides="fileinput">
         <div class="input-group input-large">
-            <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+            <div class="form-control uneditable-input input-fixed input-large" data-trigger="fileinput">
                 <i class="fa fa-file fileinput-exists"></i>&nbsp;
                 <span class="fileinput-filename"> </span>
             </div>

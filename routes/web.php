@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'HomeController@index');
 
 //  Language route
@@ -35,6 +34,11 @@ Route::group([
     Route::get('/', 'HomeController@index');
     // Admin Users
     Route::resource('/users', 'UsersController');
+    //  Manage Sliders
+    Route::resource('/sliders', 'SlidersController');
+
+    // Redis export/import
+    Route::get('/redis/{action}', 'RedisController@execute');
 
 });
 

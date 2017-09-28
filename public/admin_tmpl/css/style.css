@@ -22,10 +22,13 @@
     margin-bottom: 0px;
     color: #f0868e;
 }
-.user_create_page .avatar_box{
+.user_create_page .avatar_box, .slider_page_box .image_box{
     margin-bottom: 0px;
     width: 100%;
 }
 .user_create_page #role{
     text-transform: capitalize;
+}
+.input-large{
+    width: 100% !important;
 }

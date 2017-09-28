@@ -67,9 +67,26 @@
                     <li class="nav-item  {{ Request::path() == 'admin/users/create' ? 'active open' : '' }}">
                         <a href="{{ url('admin/users/create') }}" class="nav-link ">
                             <i class="fa fa-user"></i>
-                            <span class="title">Add New User</span>
+                            <span class="title">Add New</span>
                         </a>
                     </li>
+                </ul>
+            </li>
+
+            <li class="nav-item {{ (Request::path() == 'admin/sliders' || Request::is('admin/sliders/*')) ? 'active open' : '' }}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-image"></i>
+                    <span class="title">Sliders</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item {{ Request::path() == 'admin/sliders' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/sliders') }}" class="nav-link">
+                            <i class="fa fa-file-image-o"></i>
+                            <span class="title">Manage Sliders</span>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 
