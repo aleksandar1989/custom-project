@@ -17,12 +17,11 @@
                 {!! Form::hidden('id', $user->id) !!}
 
                 <div class="form-body">
-                    @include('admin.errors.list')<br/>
                     @include('admin.users.form')
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn green">Submit</button>
+                    <button type="submit" class="btn green">Update</button>
                 </div>
                 {!! Form::close() !!}
 

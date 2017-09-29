@@ -32,3 +32,31 @@
 .input-large{
     width: 100% !important;
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+    transform: scale(1.7);
+}
+.spiner{
+    max-width: 100px;
+}
+.spiner input[type=number]{
+    padding: 6px 5px 6px 12px;
+}
+.slider_page_box .option_box{
+    display: inline-block;
+    margin-right: 30px;
+}
+.slider_page_box .option_box label{
+    margin-right: 10px;
+}
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary{
+    background: #26C281 !important;
+}
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default{
+    background: #ed6b75 !important;
+    color: #fff !important;
+}
+.has-error .input-group-addon > i{
+    color: #e73d4a;
+}

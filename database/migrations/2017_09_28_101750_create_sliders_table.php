@@ -17,10 +17,10 @@ class CreateSlidersTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('image');
-            $table->string('url');
-            $table->text('content');
-            $table->string('position');
-            $table->string('type');
+            $table->text('url')->nullable();;
+            $table->text('content')->nullable();;
+            $table->string('position')->nullable();;
+            $table->string('type')->nullable();;
             $table->integer('order');
             $table->timestamps();
         });

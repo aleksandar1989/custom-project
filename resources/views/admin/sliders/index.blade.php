@@ -3,6 +3,7 @@
 
 @section('header')
     <link href="{{ asset('admin_tmpl/css/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('admin_tmpl/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('content')
@@ -13,8 +14,6 @@
         </h1>
         <!-- END PAGE TITLE-->
 
-
-        <form action="#" class="horizontal-form">
         {!! Form::open(['url' => 'admin/sliders', 'files' => true]) !!}
             @include('admin.sliders.form')
 

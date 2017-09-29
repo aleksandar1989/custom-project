@@ -20,7 +20,6 @@
                 {!! Form::open(['url' => 'admin/users', 'files' => true]) !!}
 
                     <div class="form-body">
-                        @include('admin.errors.list')<br/>
                         @include('admin.users.form')
                     </div>
 

@@ -1,9 +1,12 @@
 <div class="form-body">
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group  {{ $errors->has('title') ? 'has-error' : ''}}">
                 <label class="control-label">Title</label>
                 {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter slider title...']) !!}
+                @if($errors->first('title'))
+                    <span class="help-block">{{ $errors->first('title') }}</span>
+                @endif
             </div>
         </div>
         <div class="col-md-6">
@@ -15,7 +18,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group  {{ $errors->has('image') ? 'has-error' : ''}}">
                 <label class="control-label">Image</label>
                 <div class="fileinput fileinput-new image_box" data-provides="fileinput">
                     <div class="input-group input-large">
@@ -31,35 +34,59 @@
                         <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                     </div>
                 </div>
-
+                @if($errors->first('image'))
+                    <span class="help-block">{{ $errors->first('image') }}</span>
+                @endif
             </div>
         </div>
 
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('position') ? 'has-error' : ''}}">
                 <label class="control-label">Position</label>
                 {!! Form::select('position', [ 'main_slider' => 'Main Slider'], null, ['class' => 'form-control']) !!}
+                @if($errors->first('position'))
+                    <span class="help-block">{{ $errors->first('position') }}</span>
+                @endif
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Type</label>
-                        {!! Form::select('type', [ 'slider' => 'slider', 'banner' => 'Banner'], null, ['class' => 'form-control']) !!}
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Position</label>
-                        {!! Form::select('position', [ 'main_slider' => 'Main Slider'], null, ['class' => 'form-control']) !!}
-                    </div>
-                </div>
+            <div class="form-group">
+                <label class="control-label">Content</label>
+                {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'Enter the text whic be displayed on the slider']) !!}
             </div>
 
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group  {{ $errors->has('type') ? 'has-error' : ''}}">
+                        <label class="control-label">Type</label>
+                        <div class="clearfix">
+                            <div class="option_box">
+                                <label for="slider">Slider</label>
+                                {{ Form::radio('type', 'slider', true, ['class' => 'make-switch', 'data-size' => 'small']) }}
+                            </div>
+                            <div class="option_box">
+                                <label for="baner">Banner</label>
+                                {{ Form::radio('type', 'banner', false, ['class' => 'make-switch', 'data-size' => 'small']) }}
+                            </div>
+                        </div>
+                        @if($errors->first('type'))
+                            <span class="help-block">{{ $errors->first('type') }}</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label">Order</label>
+                    <div class="form-group spiner">
+                        {!! Form::number('order', 1, ['class' => 'form-control', 'min' => 0]) !!}
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
