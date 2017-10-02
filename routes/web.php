@@ -34,8 +34,13 @@ Route::group([
     Route::get('/', 'HomeController@index');
     // Admin Users
     Route::resource('/users', 'UsersController');
+
     //  Manage Sliders
-    Route::resource('/sliders', 'SlidersController');
+    Route::get('/sliders', 'SlidersController@index');
+    Route::post('/sliders', 'SlidersController@store');
+
+    //    Ajax edit slider
+    Route::get('/sliders/edit', 'SlidersController@edit');
 
     // Redis export/import
     Route::get('/redis/{action}', 'RedisController@execute');

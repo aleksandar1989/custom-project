@@ -17,7 +17,8 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        return view('admin.sliders.index');
+        $sliders = Slider::all();
+        return view('admin.sliders.index', compact('sliders'));
     }
 
 
@@ -80,16 +81,6 @@ class SlidersController extends Controller
         return redirect('/admin/sliders')->with($notification);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -97,9 +88,11 @@ class SlidersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        if($request->ajax()){
+            return Slider::findOrFail($request->slider_id);
+        }
     }
 
     /**
