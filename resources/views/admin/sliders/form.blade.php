@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <div class="form-group  {{ $errors->has('title') ? 'has-error' : ''}}">
                 <label class="control-label">Title</label>
-                {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter slider title...']) !!}
+                {!! Form::text('title', null, ['id' => 'title', 'class' => 'form-control', 'placeholder' => 'Enter slider title...']) !!}
                 @if($errors->first('title'))
                     <span class="help-block">{{ $errors->first('title') }}</span>
                 @endif
@@ -12,7 +12,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Target Url</label>
-                {!! Form::text('url', null, ['class' => 'form-control', 'placeholder' => 'Enter site url where slider will target']) !!}
+                {!! Form::text('url', null, ['id' => 'url', 'class' => 'form-control', 'placeholder' => 'Enter site url where slider will target']) !!}
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                         <span class="input-group-addon btn default btn-file">
                             <span class="fileinput-new"> Select image </span>
                             <span class="fileinput-exists"> Change </span>
-                            {!! Form::file('image') !!}
+                            {!! Form::file('image', ['id' => 'slider_image']) !!}
                         </span>
                         <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                     </div>
@@ -43,7 +43,7 @@
         <div class="col-md-6">
             <div class="form-group {{ $errors->has('position') ? 'has-error' : ''}}">
                 <label class="control-label">Position</label>
-                {!! Form::select('position', [ 'main_slider' => 'Main Slider'], null, ['class' => 'form-control']) !!}
+                {!! Form::select('position', [ 'main_slider' => 'Main Slider'], null, ['id' => 'position', 'class' => 'form-control']) !!}
                 @if($errors->first('position'))
                     <span class="help-block">{{ $errors->first('position') }}</span>
                 @endif
@@ -55,7 +55,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Content</label>
-                {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 5, 'placeholder' => 'Enter the text whic be displayed on the slider']) !!}
+                {!! Form::textarea('content', null, ['id' => 'content', 'class' => 'form-control', 'rows' => 5, 'placeholder' => 'Enter the text whic be displayed on the slider']) !!}
             </div>
 
         </div>
@@ -67,11 +67,11 @@
                         <div class="clearfix">
                             <div class="option_box">
                                 <label for="slider">Slider</label>
-                                {{ Form::radio('type', 'slider', true, ['class' => 'make-switch', 'data-size' => 'small']) }}
+                                {{ Form::radio('type', 'slider', true, ['class' => 'make-switch slider', 'data-size' => 'small']) }}
                             </div>
                             <div class="option_box">
                                 <label for="baner">Banner</label>
-                                {{ Form::radio('type', 'banner', false, ['class' => 'make-switch', 'data-size' => 'small']) }}
+                                {{ Form::radio('type', 'banner', false, ['class' => 'make-switch banner', 'data-size' => 'small']) }}
                             </div>
                         </div>
                         @if($errors->first('type'))
@@ -82,7 +82,7 @@
                 <div class="col-md-12">
                     <label class="control-label">Order</label>
                     <div class="form-group spiner">
-                        {!! Form::number('order', 1, ['class' => 'form-control', 'min' => 0]) !!}
+                        {!! Form::number('order', null, ['id' => 'order', 'class' => 'form-control', 'min' => 0]) !!}
                     </div>
 
                 </div>

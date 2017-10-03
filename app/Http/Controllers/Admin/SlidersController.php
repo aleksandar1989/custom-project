@@ -21,6 +21,14 @@ class SlidersController extends Controller
         return view('admin.sliders.index', compact('sliders'));
     }
 
+    /**
+     * Create new slider
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('admin.sliders.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -40,7 +48,7 @@ class SlidersController extends Controller
             'content' => $request->input('content'),
             'position' => $request->input('position'),
             'type' => $request->input('type'),
-            'order' => $request->input('order'),
+            'order' => $request->input('order') ? $request->input('order') : 1,
         ]);
 
         if($slider){
@@ -83,16 +91,16 @@ class SlidersController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Edit Slider
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-        if($request->ajax()){
-            return Slider::findOrFail($request->slider_id);
-        }
+        // get user by id
+        $slider = Slider::findOrFail($id);
+
+        return view('admin.sliders.edit', compact('slider'));
     }
 
     /**
@@ -102,19 +110,86 @@ class SlidersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SliderValidation $request, $id)
     {
-        //
+        // get user by id
+        $slider = Slider::findOrFail($id);
+
+        $image = $request->file('image');
+
+        $slider->title = $request->input('title');
+        $slider->url = $request->input('url');
+        $slider->content = $request->input('content');
+        $slider->position = $request->input('position');
+        $slider->type = $request->input('type');
+        $slider->order = $request->input('order');
+
+        // upload slider
+        if($image) {
+            // upload slider
+            $image_name = $image->getClientOriginalName();
+            //  get slider path
+            if( $slider->type == 'slider' ){
+                $destinationPath = public_path('/images/slider/');
+            }else{
+                $destinationPath = public_path('/images/banner/');
+            }
+
+            //  if image with same nama already exist
+            if(File::exists($destinationPath.$image_name)){
+                $i = 1;
+                while(File::exists($destinationPath.$image_name))
+                {
+                    $image_crop_ext = explode('.', $image_name);
+                    $image_name = $image_crop_ext[0].$i.'.'.$image_crop_ext[1];
+                    $i++;
+                }
+            }
+
+            //  move image to location
+            $image->move($destinationPath, $image_name);
+            $slider->image = $image_name;
+        }
+
+
+        if($slider->update()) {
+            $notification = array(
+                'message' => 'Slider is  successfully updated!',
+                'type' => 'success'
+            );
+        } else{
+            $notification = array(
+                'message' => 'Slider doesn\'t update!',
+                'type' => 'error'
+            );
+        }
+
+        return redirect()->back()->with($notification);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete slider
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        // get user
+        $slider = Slider::findOrFail($id);
+
+        if($slider->delete()) {
+            $message = [
+                'message' => 'Slider has been deleted.',
+                'type' => 'success'
+            ];
+        } else {
+            $message = [
+                'message' => 'Slider has not been deleted.',
+                'type' => 'danger'
+            ];
+        }
+
+        return redirect()->back()->with($message);
     }
 }

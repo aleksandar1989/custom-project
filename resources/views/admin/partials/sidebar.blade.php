@@ -82,8 +82,14 @@
                 <ul class="sub-menu">
                     <li class="nav-item {{ Request::path() == 'admin/sliders' ? 'active open' : '' }}">
                         <a href="{{ url('admin/sliders') }}" class="nav-link">
-                            <i class="fa fa-file-image-o"></i>
+                            <i class="fa fa-sliders"></i>
                             <span class="title">Manage Sliders</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::path() == 'admin/sliders/create' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/sliders/create') }}" class="nav-link">
+                            <i class="fa fa-file-image-o"></i>
+                            <span class="title">Add Slider</span>
                         </a>
                     </li>
 

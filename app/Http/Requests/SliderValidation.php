@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Input;
 
 class SliderValidation extends FormRequest
 {
@@ -23,11 +24,20 @@ class SliderValidation extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|max:255',
-            'position' => 'required',
-            'type' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
-        ];
+        if( $this->method() == 'PATCH' && empty(Input::has('image')) ) {
+            return [
+                'title' => 'required|max:255',
+                'position' => 'required',
+                'type' => 'required',
+                'image' => 'image|mimes:jpeg,png,jpg,JPG,gif,svg|max:1024',
+            ];
+        } else{
+            return [
+                'title' => 'required|max:255',
+                'position' => 'required',
+                'type' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,JPG,svg|max:1024',
+            ];
+        }
     }
 }

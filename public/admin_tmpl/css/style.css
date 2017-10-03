@@ -43,11 +43,11 @@ input[type=number]::-webkit-outer-spin-button {
 .spiner input[type=number]{
     padding: 6px 5px 6px 12px;
 }
-.slider_page_box .option_box{
+.slider_create_page .option_box{
     display: inline-block;
     margin-right: 30px;
 }
-.slider_page_box .option_box label{
+.slider_create_page .option_box label{
     margin-right: 10px;
 }
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary{
@@ -90,4 +90,18 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .visible{
     display: block !important;
+}
+.edit_image_preview{
+    margin-top: 50px;
+    text-align: center;
+}
+.edit_image_preview img{
+    max-width: 100%;
+    margin: 0 auto;
+}
+.edit_image_preview h1{
+    font-weight: 500;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+    border-bottom: 1px solid #eef1f5;
 }
