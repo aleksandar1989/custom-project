@@ -6,6 +6,7 @@ use App\Http\Requests\UserValidation;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class UsersController extends Controller
 {
@@ -16,7 +17,9 @@ class UsersController extends Controller
     public function index()
     {
         //  get all users with roles
-        $users = User::with('roles')->get();
+        $users = Cache::remember('users_list_cache', 1, function (){
+            return User::with('roles')->get();
+        });
         return view('admin.users.index', compact('users'));
     }
 
