@@ -15,7 +15,6 @@
                     @endif
                         {{ trans('app.Welcome') }}
 
-                    {!! $content !!}
                 </div>
             </div>
         </div>
