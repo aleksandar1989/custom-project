@@ -41,6 +41,11 @@ Route::group([
     // Redis export/import
     Route::get('/redis/{action}', 'RedisController@execute');
 
+    //  Pages
+    Route::get('/pages/create', 'PagesController@create');
+    //  Posts
+    Route::resource('/posts', 'PostsController');
+
 });
 
 //facebook socialite.

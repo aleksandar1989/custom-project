@@ -14,6 +14,7 @@
                         </div>
                     @endif
                         {{ trans('app.Welcome') }}
+
                 </div>
             </div>
         </div>

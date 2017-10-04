@@ -105,3 +105,66 @@ input[type=number]::-webkit-outer-spin-button {
     text-transform: capitalize;
     border-bottom: 1px solid #eef1f5;
 }
+.page-content-white .page-title {
+    margin: 10px 0px 25px;
+    font-size: 24px;
+}
+
+.create_post_page .main-content {
+    padding: 40px 30px 15px;
+    background-color: #fff;
+}
+.create_post_page .container {
+    margin-bottom: 30px;
+}
+.create_post_page .bordered {
+    border: 1px solid #e7ecf1;
+    border-top-color: rgb(231, 236, 241);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(231, 236, 241);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(231, 236, 241);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(231, 236, 241);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+}
+
+.create_post_page .main-content .post_date {
+    float: right;
+    font-size: 13px;
+    font-weight: 600;
+    color: #9aa5b2;
+}
+
+.create_post_page .main-content>.head>.main_title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #4e5a64;
+    margin: 0 0 20px;
+    display: inline-block;
+}
+.create_post_page .sidebar {
+    padding: 40px 30px;
+    background-color: #fff;
+}
+.create_post_page .sidebar .sidebar-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #4e5a64;
+    letter-spacing: 1px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.form-group.form-md-line-input{
+    margin: 0 0 20px 0;
+    padding-top: 20px;
+}
