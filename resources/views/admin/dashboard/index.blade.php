@@ -328,7 +328,7 @@
                                     <span class="arrow"> </span>
                                     <a href="javascript:;" class="name"> Bob Nilson </a>
                                     <span class="datetime"> at 20:54 </span>
-                                                        <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. sed diam nonummy nibh euismod tincidunt ut laoreet.
+                                    <span class="body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. sed diam nonummy nibh euismod tincidunt ut laoreet.
                                                             </span>
                                 </div>
                             </li>
@@ -634,7 +634,7 @@
                                         </div>
                                         <div class="cont-col2">
                                             <div class="desc"> You have 4 pending tasks.
-                                                            <span class="label label-sm label-warning "> Take action
+                                                <span class="label label-sm label-warning "> Take action
                                                                 <i class="fa fa-share"></i>
                                                             </span>
                                             </div>
@@ -776,7 +776,7 @@
                                         </div>
                                         <div class="cont-col2">
                                             <div class="desc"> You have 4 pending tasks.
-                                                            <span class="label label-sm label-warning "> Take action
+                                                <span class="label label-sm label-warning "> Take action
                                                                 <i class="fa fa-share"></i>
                                                             </span>
                                             </div>

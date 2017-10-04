@@ -51,6 +51,30 @@
 
             </li>
 
+
+            <li class="nav-item {{ (Request::path() == 'admin/pages' || Request::is('admin/pages/*')) ? 'active open' : '' }}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-clone"></i>
+                    <span class="title">Pages</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item {{ Request::path() == 'admin/pages' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/pages') }}" class="nav-link">
+                            <i class="fa fa-hdd-o"></i>
+                            <span class="title">Manage Pages</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::path() == 'admin/pages/create' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/pages/create') }}" class="nav-link">
+                            <i class="fa fa-file-text"></i>
+                            <span class="title">Add Page</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
             <li class="nav-item {{ (Request::path() == 'admin/users' || Request::is('admin/users/*')) ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-users"></i>
