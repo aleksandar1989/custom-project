@@ -14,7 +14,7 @@
 
   <title>{{ trans('laravel-filemanager::lfm.title-page') }}</title>
   <link rel="shortcut icon" type="image/png" href="{{ asset('admin_tmpl/plugins/laravel-filemanager/img/folder.png') }}">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link href="{{ asset('admin_tmpl/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ asset('admin_tmpl/plugins/laravel-filemanager/css/cropper.min.css') }}">
   <style>{!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/css/lfm.css')) !!}</style>
@@ -24,10 +24,11 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.css">
 </head>
 <body>
+<div class="filemanager_index">
   <div class="container-fluid" id="wrapper">
     <div class="panel panel-primary hidden-xs">
       <div class="panel-heading">
-        <h1 class="panel-title">{{ trans('laravel-filemanager::lfm.title-panel') }}</h1>
+        <h1 class="panel-title">{{ trans('Laracus FileManager') }}</h1>
       </div>
     </div>
     <div class="row">
@@ -140,7 +141,7 @@
       </div>
     </div>
   </div>
-
+</div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>

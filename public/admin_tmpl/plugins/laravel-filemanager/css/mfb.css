@@ -650,6 +650,29 @@
   content: attr(data-mfb-label);
   left: 70px; }
 
+.filemanager_index .panel-heading{
+  background-color: #364150;
+  border-color: #364150;
+}
+.filemanager_index .panel-primary{
+  border-color: #364150;
+}
+.filemanager_index .btn-primary, .bootbox-alert .btn-primary, .bootbox-prompt .btn-primary{
+  background-color: #36c6d3;
+  border-color: #36c6d3;
+}
+.filemanager_index .btn-primary:active:hover, .filemanager_index .btn-primary:active:focus, .bootbox-alert .btn-primary:active:focus, .bootbox-alert .btn-primary:active:hover, .bootbox-prompt .btn-primary:active:hover, .bootbox-prompt .btn-primary:active:focus{
+  background-color: #2ab4c0;
+  border-color: #2ab4c0;
+}
+.filemanager_index #tree a i, .filemanager_index .navbar a i{
+  color: #F7CA18;
+}
+.filemanager_index #tree a, .filemanager_index .navbar a{
+  color: #666;
+}
+
+
 /*------------------------------------*\
     #DEVELOPMENT | In development
 \*------------------------------------*/
