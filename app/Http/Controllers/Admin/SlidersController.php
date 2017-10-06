@@ -18,9 +18,7 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        $sliders = Cache::remember('slider_posts_cache', 1, function (){
-            return Slider::all();
-        });
+        $sliders = Slider::all();
         return view('admin.sliders.index', compact('sliders'));
     }
 

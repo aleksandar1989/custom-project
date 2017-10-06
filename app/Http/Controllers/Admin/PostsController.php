@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\PostRequest;
+use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -28,16 +31,40 @@ class PostsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new post
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $content = $request->get('content');
+        // create post
+        $post = Post::create([
+            'user_id' => Auth::user()->id,
+            'title' => $request->input('title'),
+            'slug' => $request->input('slug'),
+            'content' => $request->input('content'),
+            'seo_title' => $request->input('seo_title'),
+            'seo_description' => $request->input('seo_description'),
+            'type' => $request->input('type'),
+            'template' => $request->input('template'),
+            'status' => '',
+            'published_at' => $request->input('published_at'),
+        ]);
 
-        return view('front.home', compact('content'));
+        if($post) {
+            $message = [
+                'message' => 'Post has been created.',
+                'type' => 'success'
+            ];
+        }else{
+            $message = [
+                'message' => 'Post has not been created.',
+                'type' => 'danger'
+            ];
+        }
+
+        return redirect('admin/posts/' . $post->id . '/edit')->with($message);
     }
 
     /**
@@ -52,14 +79,19 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the post.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        // get post
+        $post = Post::find($id);
+
+        $postType = $post->type;
+
+        return view('admin.posts.edit', compact('post', 'postType'));
     }
 
     /**

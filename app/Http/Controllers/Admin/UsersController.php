@@ -17,9 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         //  get all users with roles
-        $users = Cache::remember('users_list_cache', 1, function (){
-            return User::with('roles')->get();
-        });
+        $users = User::with('roles')->get();
         return view('admin.users.index', compact('users'));
     }
 

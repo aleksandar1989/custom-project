@@ -1,5 +1,5 @@
 @extends('admin.app')
-@section('title') Create Page @endsection
+@section('title') Update {{ $postType }} @endsection
 
 @section('header')
     <link href="{{ asset('admin_tmpl/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -8,8 +8,9 @@
 @section('content')
     <div class="create_post_page">
         <!-- form start -->
-        {!! Form::open(['url' => 'admin/posts']) !!}
-            @include('admin.pages.form', ['action' => 'Post', 'type' => 'page'])
+        {!! Form::model($post, ['method' => 'PATCH', 'action' => ['Admin\PostsController@update', $post->id]]) !!}
+        {!! Form::hidden('id', $post->id) !!}
+        @include('admin.pages.form', ['action' => 'Update', 'type' => $postType])
         {!! Form::close() !!}
     </div>
 

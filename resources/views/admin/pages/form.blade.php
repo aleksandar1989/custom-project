@@ -9,13 +9,16 @@
                 </div>
             </div>
 
-            @include('admin.posts.form.main')
+            @include('admin.posts.form.main_box')
 
         </div>
     </div>
     <div class="col-lg-3">
         <div class="sidebar bordered blog-container">
 
+            @include('admin.posts.form.publish_box')
+
+            @include('admin.posts.form.attributes_box')
 
         </div>
     </div>

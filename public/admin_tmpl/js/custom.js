@@ -13,3 +13,7 @@ function sliderDelete(e) {
     }
 }
 
+$('.count_characters').keyup(function() {
+    var len = $(this).val().length;
+    $(this).parent().find('.charNum').text(len);
+});

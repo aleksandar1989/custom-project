@@ -196,3 +196,21 @@ input[type=number]::-webkit-outer-spin-button {
 .mce-window-head .mce-title{
     font-weight: normal !important;
 }
+.create_post_page .sidebar h3{
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #4e5a64;
+    letter-spacing: 1px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+.create_post_page .sidebar_item{
+    margin-bottom: 50px;
+}
+.create_post_page .sidebar_item:last-child{
+    margin-bottom: 0px;
+}
+.md-radio-list{
+    margin-top: 20px;
+}
