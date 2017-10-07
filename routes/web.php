@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index');
 
 //  Language route
 Route::post('/language-chooser', 'LanguageController@changeLanguage');
@@ -48,6 +47,11 @@ Route::group([
 
 });
 
+//  Home route
+Route::get('/', 'HomeController@index');
 //facebook socialite.
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
+
+// Post route
+Route::get('/{post?}', 'PostsController@show')->where('post', '(.*)');
