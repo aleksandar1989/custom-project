@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
@@ -28,6 +29,14 @@ class Post extends Model
     }
 
     /**
+     * Set Published At
+     * @param $date
+     */
+    public function setPublishedAtAttribute($date) {
+        $this->attributes['published_at'] = $date ? Carbon::createFromFormat('d/m/Y H:i', $date) : Carbon::now();
+    }
+
+    /**
      * Get post url
      * @return string
      */
@@ -36,4 +45,36 @@ class Post extends Model
 
     }
 
+    /**
+     * Set slug
+     * @param $name
+     */
+    public function setSlugAttribute($name) {
+        // seo title or title
+        $title = $this->seo_title ? $this->seo_title : $this->title;
+        $this->attributes['slug'] = $name ? $this->getSlug($name) : $this->getSlug($title);
+    }
+
+    /**
+     * Get available slug
+     * @param $name
+     * @return string
+     */
+    private function getSlug($name)
+    {
+        $slug = Str::slug($name);
+
+        $slugs = $this->whereRaw("slug REGEXP '^{$slug}(-[0-9]*)?$'");
+
+        if ($slugs->count() === 0) {
+
+            return $slug;
+
+        }
+
+        // get reverse order and get first
+        $lastSlugNumber = intval(str_replace($slug . '-', '', $slugs->orderBy('created_at', 'desc')->first()->slug));
+
+        return $slug . '-' . ($lastSlugNumber + 1);
+    }
 }

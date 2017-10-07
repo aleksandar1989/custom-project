@@ -101,9 +101,34 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        // get post
+        $post = Post::find($id);
+        // set new values
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->seo_title = $request->input('seo_title');
+        $post->seo_description = $request->input('seo_description');
+        $post->template = $request->input('template');
+        $post->published_at = $request->input('published_at');
+        if($request->input('slug') != $post->slug) {
+            $post->slug = $request->input('slug');
+        }
+
+        if($post->save()) {
+            $message = [
+                'message' => 'Post has been updated.',
+                'type' => 'success'
+            ];
+        }else{
+            $message = [
+                'message' => 'Post has not been updated.',
+                'type' => 'danger'
+            ];
+        }
+
+        return redirect('admin/posts/' . $post->id . '/edit')->with($message);
     }
 
     /**
