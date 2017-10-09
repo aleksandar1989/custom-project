@@ -8,8 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laracus') }}</title>
-
+    <title>Laracus | @yield('title')</title>
+    <meta name="description" content="@yield('description')">
     <!-- Styles -->
     <link href="{{ asset('front/css/app.css') }}" rel="stylesheet">
 

@@ -56,6 +56,14 @@ class Post extends Model
     }
 
     /**
+     * Get author
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
+    /**
      * Get available slug
      * @param $name
      * @return string

@@ -67,16 +67,6 @@ class PostsController extends Controller
         return redirect('admin/posts/' . $post->id . '/edit')->with($message);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the post.
@@ -139,6 +129,20 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        if($post->delete()) {
+            $message = [
+                'message' => 'Post has been deleted.',
+                'type' => 'success'
+            ];
+        } else {
+            $message = [
+                'message' => 'Post has not been deleted.',
+                'type' => 'danger'
+            ];
+        }
+
+        return redirect()->back()->with($message);
     }
 }

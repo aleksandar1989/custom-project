@@ -42,8 +42,12 @@ Route::group([
 
     //  Pages
     Route::get('/pages/create', 'PagesController@create');
+    Route::get('/pages', 'PagesController@index');
+
     //  Posts
     Route::resource('/posts', 'PostsController');
+    // Admin Search
+    Route::resource('/search', 'SearchController');
 
 });
 

@@ -25,8 +25,8 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:300',
-            'slug' => 'min:3|unique:posts,slug,' . Input::get('id'),
+            'title' => 'min:3|required|max:300',
+            'slug' => 'unique:posts,slug,' . Input::get('id'),
             'template' => 'required'
         ];
     }

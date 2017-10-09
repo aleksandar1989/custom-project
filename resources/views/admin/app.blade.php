@@ -34,6 +34,7 @@
           id="style_color"/>
     <link href="{{ asset('admin_tmpl/css/custom.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('admin_tmpl/css/style.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('admin_tmpl/css/responsive.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="{{ asset('admin_tmpl/images/favicon.png') }}"/>
 

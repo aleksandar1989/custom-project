@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
+    /**
+     * Show all pages
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index() {
+        // get all pages
+        $posts = Post::where('type', 'page')->get();
+
+        return view('admin.posts.index', compact('posts'));
+    }
+
     /**
      * Create new page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

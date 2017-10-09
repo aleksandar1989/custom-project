@@ -37,7 +37,7 @@ class UserValidation extends FormRequest
                 'role' => 'required',
                 'email' => 'required|email|max:255|unique:users,email,' . Input::get('id'),
                 'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024',
-                'password' => 'confirmed|min:6',
+                'password' => 'confirmed|min:6,',
             ];
         }
 

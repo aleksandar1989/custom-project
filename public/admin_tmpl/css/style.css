@@ -1,6 +1,9 @@
 #users_table thead tr th:after{
     display: none;
 }
+#pages_table thead tr th:after{
+    display: none;
+}
 .label-success{
     background: #26C281;
 }
@@ -213,4 +216,65 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .md-radio-list{
     margin-top: 20px;
+}
+#pages_table .author a{
+    color: #c49f47;
+}
+.page-sidebar .sidebar-search .input-group .form-control{
+    color: #26A8DF;
+}
+.laracus_color{
+    color: #27B6F1;
+}
+
+.search_page .search-item{
+    list-style: none;
+    padding: 20px;
+    background: #eef1f5;
+    border-bottom: 1px solid;
+    border-color: #f4f6f8;
+    margin-bottom: 10px;
+}
+.search_page .search-title{
+    font-size: 19px;
+    margin: 0;
+    font-weight: 600;
+}
+.search_page .search-title a{
+    color: #4e5a64;
+}
+.search_page .search-desc{
+    color: #a0a9b4;
+    font-size: 13px;
+    margin-top: 20px;
+}
+.search_page ul{
+    padding: 0;
+    margin-bottom: 0;
+}
+.search_page .search-bar{
+    padding: 20px;
+    margin-bottom: 40px;
+    background-color: #eef1f5;
+}
+.search_page .search-bar input{
+    border: none;
+    background-color: #fff;
+    color: #a0a9b4;
+    height: 55px;
+}
+.search_page .search-bar button{
+    height: 55px;
+    width: 130px;
+    margin-top: -2px;
+}
+.search_page .search-item .action{
+    text-align: right;
+}
+.search_page .search-item .action span{
+    margin: 0 15px;
+}
+.search_page .search-item .action span, a{
+    display: inline-block;
+    vertical-align: middle;
 }

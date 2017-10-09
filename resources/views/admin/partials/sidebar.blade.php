@@ -26,19 +26,17 @@
                 <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
                 <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
                 <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-                <form class="sidebar-search  " action="page_general_search_3.html" method="POST">
+                {!! Form::open(['url' => '/admin/search', 'method' => 'get', 'class' => 'sidebar-search']) !!}
                     <a href="javascript:;" class="remove">
                         <i class="icon-close"></i>
                     </a>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text"  name="text"  class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-                                            <a href="javascript:;" class="btn submit">
-                                                <i class="icon-magnifier"></i>
-                                            </a>
-                                        </span>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
                     </div>
-                </form>
+                {!! Form::close() !!}
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
             </li>
 

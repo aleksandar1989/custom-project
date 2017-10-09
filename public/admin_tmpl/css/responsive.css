@@ -1,0 +1,21 @@
+@media only screen and (max-width:1500px){
+
+}
+@media only screen and (max-width:1200px){
+
+}
+@media only screen and (max-width:991px){
+
+}
+@media only screen and (max-width:768px){
+    .search_page .search-item .action span{
+        display: none;
+    }
+}
+@media only screen and (max-width:570px){
+
+
+}
+@media only screen and (max-width:480px){
+
+}

@@ -6,6 +6,13 @@ function userDelete(e) {
     }
 }
 
+// delete post on submit function
+function postDelete(e) {
+    if (confirm('Are you sure?')) {
+        $(e).find('form').submit();
+    }
+}
+
 // delete slider on submit function
 function sliderDelete(e) {
     if (confirm('Are you sure?')) {
