@@ -69,7 +69,7 @@
                                             <li class="divider"> </li>
                                             <li>
                                                 <a href="{{ url("/$post->slug") }}">
-                                                    <i class="fa fa-file-text"></i> Preview Page </a>
+                                                    <i class="fa fa-link"></i> Preview Page </a>
                                             </li>
                                         </ul>
                                     </div>
