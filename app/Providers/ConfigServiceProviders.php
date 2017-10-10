@@ -28,7 +28,7 @@ class ConfigServiceProviders extends ServiceProvider
 
         if(Schema::hasTable('languages')) {
             config([
-                'laravellocalization.supportedLocales' => DB::table('languages')->pluck('name', 'code'),
+                'laravellocalization.supportedLocales' => DB::table('languages')->pluck('name', 'code')->toArray(),
 
                 'laravellocalization.useAcceptLanguageHeader' => true,
 
