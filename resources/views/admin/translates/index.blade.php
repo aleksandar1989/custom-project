@@ -68,12 +68,11 @@
 
                                             <select name="language" class="form-control" id="language_id">
                                                 <option value="">Choose language...</option>
-                                                {{--<?php print_r(locales()); ?>--}}
-                                                {{--@foreach(locales() as $code => $name)--}}
-                                                    {{--@if(!in_array(languageIdByCode($code), $word->translates->pluck('language_id')->toArray())))--}}
-                                                    {{--<option value="{{ $code }}">{{ $name }}</option>--}}
-                                                    {{--@endif--}}
-                                                {{--@endforeach--}}
+                                                @foreach(locales() as $code => $name)
+                                                    @if(!in_array(languageIdByCode($code), $word->translates->pluck('language_id')->toArray())))
+                                                    <option value="{{ $code }}">{{ $name }}</option>
+                                                    @endif
+                                                @endforeach
                                             </select>
 
                                         </div>
