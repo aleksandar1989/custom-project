@@ -118,6 +118,35 @@
                 </ul>
             </li>
 
+            <li class="nav-item {{ (Request::path() == 'admin/languages' || Request::path() == 'admin/languages/translates' || Request::is('admin/languages/*')) ? 'active open' : '' }}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-language"></i>
+                    <span class="title">Languages</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item {{ Request::path() == 'admin/languages' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/languages') }}" class="nav-link">
+                            <i class="fa fa-reorder"></i>
+                            <span class="title"> All Languages</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::path() == 'admin/languages/create' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/languages/create') }}" class="nav-link">
+                            <i class="fa fa-plus"></i>
+                            <span class="title">Add New</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::path() == 'admin/languages/translates' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/languages/translates') }}" class="nav-link">
+                            <i class="fa fa-sliders"></i>
+                            <span class="title">Word Translate</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
         </ul>
         <!-- END SIDEBAR MENU -->
 

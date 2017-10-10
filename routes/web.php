@@ -48,7 +48,12 @@ Route::group([
     Route::resource('/posts', 'PostsController');
     // Admin Search
     Route::resource('/search', 'SearchController');
-
+    // Admin Translates
+    Route::resource('/languages/translates', 'TranslatesController');
+    //    Languages
+    Route::resource('/languages', 'LanguagesController');
+    // Admin Translate Words
+    Route::resource('/translate-words', 'TranslateWordsController');
 });
 
 //  Home route
