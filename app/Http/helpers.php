@@ -32,6 +32,36 @@ if (! function_exists('locales')) {
 if (! function_exists('languageIdByCode')) {
     function languageIdByCode($code)
     {
-        return Language::where('code', $code)->get();
+        return Language::where('code', $code)->first()->id;
+    }
+}
+
+/**
+ * Get language code by id
+ */
+if (! function_exists('languageById')) {
+    function languageById($id)
+    {
+        return Language::find($id);
+    }
+}
+
+/**
+ * Get admin language
+ */
+if (! function_exists('language')) {
+    function language($action = 'id')
+    {
+        if(!Redis::get('language_' . Session::getId())) {
+            Redis::set('language_' . Session::getId(), 1);
+        }
+
+        if($action == 'id') {
+            return Language::where('code', locale())->first()->id;
+        } else if($action == 'code') {
+            $lang = language::findOrFail(Redis::get('language_' . Session::getId()));
+            return $lang->code;
+        }
+
     }
 }

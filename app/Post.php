@@ -18,6 +18,7 @@ class Post extends Model
         'status',
         'template',
         'type',
+        'language_id',
         'published_at',
     ];
 

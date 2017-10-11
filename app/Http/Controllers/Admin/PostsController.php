@@ -50,6 +50,7 @@ class PostsController extends Controller
             'template' => $request->input('template'),
             'status' => '',
             'published_at' => $request->input('published_at'),
+            'language_id' => language()
         ]);
 
         if($post) {

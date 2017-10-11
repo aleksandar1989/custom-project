@@ -14,7 +14,7 @@ class PagesController extends Controller
      */
     public function index() {
         // get all pages
-        $posts = Post::where('type', 'page')->get();
+        $posts = Post::where('type', 'page')->where('language_id', language())->get();
 
         return view('admin.posts.index', compact('posts'));
     }

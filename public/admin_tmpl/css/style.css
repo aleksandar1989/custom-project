@@ -252,23 +252,23 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 0;
     margin-bottom: 0;
 }
-.search_page .search-bar{
+.search_page .search-bar, .translates_listing_page .search-bar{
     padding: 20px;
     margin-bottom: 40px;
     background-color: #eef1f5;
 }
-.search_page .search-bar input{
+.search_page .search-bar input, .translates_listing_page .search-bar input{
     border: none;
     background-color: #fff;
     color: #a0a9b4;
     height: 55px;
 }
-.search_page .search-bar button{
+.search_page .search-bar button, .translates_listing_page .search-bar button{
     height: 55px;
     width: 130px;
     margin-top: -2px;
 }
-.search_page .search-item .action{
+.search_page .search-item .action, .translates_listing_page .search-item .action{
     text-align: right;
 }
 .search_page .search-item .action span{
@@ -277,4 +277,65 @@ input[type=number]::-webkit-outer-spin-button {
 .search_page .search-item .action span, a{
     display: inline-block;
     vertical-align: middle;
+}
+
+.form-group  label{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+.form-group input, .form-group select, .form-group textarea{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+.translates_listing_page .panel{
+    border-top-color: #3598dc;
+    margin: 0px;
+}
+.translates_listing_page .panel .box-title{
+    display: inline-block;
+    font-weight: 500;
+}
+.translates_listing_page .panel .delete_action{
+    float: right;
+    margin-top: 10px;
+}
+.translates_listing_page .panel a{
+    color: #333333;
+    text-decoration: none;
+}
+.translates_listing_page .panel .panel-collapse{
+    margin-bottom: 12px;
+}
+.translates_listing_page .panel .box-body{
+    margin-top: 10px;
+}
+.translates_listing_page .panel .box-title i{
+    color: #c5b96b;
+    margin-right: 5px;
+}
+.translates_listing_page .translate_key_list_box .title{
+    margin-top: 3px;
+}
+.translates_listing_page .translate_key_list_box label{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+}
+.translates_listing_page .translate_key_list_box textarea{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom: 1px solid #e7ecf1;
+    outline: none;
+}
+.translates_listing_page .key_list_title{
+    margin: 20px 0 0;
+}
+.translates_listing_page .update_key button{
+    margin-top: 3px;
+    margin-left: 10px;
+}
+.translates_listing_page .delete_key button{
+    margin-top: 3px;
 }
