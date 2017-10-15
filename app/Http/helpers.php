@@ -12,7 +12,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 if (! function_exists('locale')) {
     function locale()
     {
-        return LaravelLocalization::getCurrentLocale();
+        return app()->getLocale();
     }
 }
 

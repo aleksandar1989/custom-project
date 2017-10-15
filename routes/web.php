@@ -56,8 +56,16 @@ Route::group([
     Route::resource('/translate-words', 'TranslateWordsController');
 });
 
+
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+], function() {
 //  Home route
-Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index');
+
+
+});
 //facebook socialite.
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');

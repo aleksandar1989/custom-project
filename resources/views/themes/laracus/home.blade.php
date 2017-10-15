@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        {{ trans('app.Welcome') }}
+                        {{ trans('app.Welcome') }} <br>
+                        {{ Translate::key('About') }}
+
 
                 </div>
             </div>
