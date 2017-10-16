@@ -54,6 +54,8 @@ Route::group([
     Route::resource('/languages', 'LanguagesController');
     // Admin Translate Words
     Route::resource('/translate-words', 'TranslateWordsController');
+    // Admin Terms
+    Route::resource('/terms', 'TermsController');
 });
 
 
@@ -70,5 +72,9 @@ Route::group([
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
 
+// Api test route
+Route::get('/api', 'HomeController@api');
+
 // Post route
 Route::get('/{post?}', 'PostsController@show')->where('post', '(.*)');
+

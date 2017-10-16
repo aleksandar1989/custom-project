@@ -50,6 +50,35 @@
             </li>
 
 
+            <li class="nav-item {{ (Request::path() == 'admin/posts' || Request::is('admin/posts/*')) ? 'active open' : '' }}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-thumb-tack"></i>
+                    <span class="title">Posts</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item {{ Request::path() == 'admin/posts' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/posts') }}" class="nav-link">
+                            <i class="fa fa-hdd-o"></i>
+                            <span class="title">Manage Posts</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::path() == 'admin/posts/create' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/posts/create') }}" class="nav-link">
+                            <i class="fa fa-file-text"></i>
+                            <span class="title">Add Post</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::path() == 'admin/terms/create' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/terms/create') }}" class="nav-link">
+                            <i class="fa fa-list"></i>
+                            <span class="title">Categories</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
             <li class="nav-item {{ (Request::path() == 'admin/pages' || Request::is('admin/pages/*')) ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-clone"></i>
