@@ -2,20 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Term;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class TermsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -39,14 +32,17 @@ class TermsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Manage categories
      *
-     * @param  int  $id
+     * @param $taxonomy
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($taxonomy)
     {
-        //
+        // get all categories leveled
+        $categories = Term::getTerms($taxonomy);
+
+        return view('admin.terms.show', compact('categories'));
     }
 
     /**

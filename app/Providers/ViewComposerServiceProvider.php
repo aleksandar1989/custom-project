@@ -18,6 +18,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->composeDropdownRoles('admin.users.form');
+        $this->composeAttributes('admin.terms.form');
         $this->composeAttributes('admin.posts.form.attributes_box');
     }
 
@@ -66,6 +67,10 @@ class ViewComposerServiceProvider extends ServiceProvider
                     // get templates
                     $files = File::allFiles(resource_path('views/themes/'. env('DEFAULT_THEME') . '/' . $type));
                     break;
+                case 'category':
+                    // get templates
+                    $files = File::allFiles(resource_path('views/themes/'. env('DEFAULT_THEME') . '/' . $type));
+                    break;
                 case 'edit':
                     switch($type) {
                         case 'posts':
@@ -80,6 +85,10 @@ class ViewComposerServiceProvider extends ServiceProvider
                             $postType = $post->type;
 
                             break;
+                        case 'terms':
+                            //get templates
+                            $files = File::allFiles(resource_path('views/themes/'. env('DEFAULT_THEME') . '/terms'));
+                            break;
                     }
 
                     break;
@@ -93,8 +102,10 @@ class ViewComposerServiceProvider extends ServiceProvider
                 $templates[$exp[0]] = ucwords(str_replace('_', ' ', $exp[0]));
             }
             asort($templates);
+            // get posts for dropdown parent
+            $postsLeveled = Post::getPosts($postType);
 
-            $view->with(compact('templates'));
+            $view->with(compact('templates', 'postsLeveled'));
         });
     }
 }

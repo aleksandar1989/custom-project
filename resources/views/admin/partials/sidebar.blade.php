@@ -69,8 +69,8 @@
                             <span class="title">Add Post</span>
                         </a>
                     </li>
-                    <li class="nav-item {{ Request::path() == 'admin/terms/create' ? 'active open' : '' }}">
-                        <a href="{{ url('admin/terms/create') }}" class="nav-link">
+                    <li class="nav-item {{ Request::path() == 'admin/terms/category' ? 'active open' : '' }}">
+                        <a href="{{ url('admin/terms/category') }}" class="nav-link">
                             <i class="fa fa-list"></i>
                             <span class="title">Categories</span>
                         </a>

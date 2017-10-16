@@ -42,12 +42,14 @@ class PostsController extends Controller
         $post = Post::create([
             'user_id' => Auth::user()->id,
             'title' => $request->input('title'),
+            'parent_id' => $request->input('parent_id'),
             'slug' => $request->input('slug'),
             'content' => $request->input('content'),
             'seo_title' => $request->input('seo_title'),
             'seo_description' => $request->input('seo_description'),
             'type' => $request->input('type'),
             'template' => $request->input('template'),
+            'order' => $request->input('order') ?? 0 ,
             'status' => '',
             'published_at' => $request->input('published_at'),
             'language_id' => language()
@@ -98,10 +100,12 @@ class PostsController extends Controller
         $post = Post::find($id);
         // set new values
         $post->title = $request->input('title');
+        $post->parent_id = $request->input('parent_id');
         $post->content = $request->input('content');
         $post->seo_title = $request->input('seo_title');
         $post->seo_description = $request->input('seo_description');
         $post->template = $request->input('template');
+        $post->order = $request->input('order');
         $post->published_at = $request->input('published_at');
         if($request->input('slug') != $post->slug) {
             $post->slug = $request->input('slug');

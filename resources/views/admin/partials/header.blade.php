@@ -18,6 +18,13 @@
     <!-- BEGIN TOP NAVIGATION MENU -->
     <div class="top-menu">
         <ul class="nav navbar-nav pull-right">
+            <li class="dropdown language_select">
+                <a>
+                    {!! Form::open(['method' => 'PATCH', 'action' => ['Admin\LanguagesController@update', 0]]) !!}
+                    {!! Form::select('language', locales(), language('code'), ['class' => 'btn grey-mint btn-xs', 'onchange' => 'this.form.submit()']) !!}
+                    {!! Form::close() !!}
+                </a>
+            </li>
             <li class="dropdown dropdown-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                    data-close-others="true">
@@ -25,6 +32,7 @@
                     <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
                     <i class="fa fa-angle-down"></i>
                 </a>
+
                 <ul class="dropdown-menu dropdown-menu-default">
                     <li>
                         <a href="page_user_profile_1.html">

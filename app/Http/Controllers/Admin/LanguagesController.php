@@ -7,6 +7,7 @@ use App\Language;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
 
 class LanguagesController extends Controller
 {
@@ -78,5 +79,20 @@ class LanguagesController extends Controller
         }
 
         return redirect()->back()->with($message);
+    }
+
+    /**
+     * change admin language
+     * @param $id
+     */
+    public function update($id, Request $request) {
+        // get language by code
+        $lang = Language::where('code', $request->input('language'))->first();
+
+        // change admin language
+        Redis::set('language_' . Session::getId(), $lang->id);
+
+        return redirect('admin');
+
     }
 }

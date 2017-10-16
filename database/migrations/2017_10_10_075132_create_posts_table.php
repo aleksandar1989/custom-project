@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('parent_id')->unsigned();
             $table->text('title');
             $table->string('slug')->unique();
             $table->longText('content')->nullable();
@@ -25,6 +26,7 @@ class CreatePostsTable extends Migration
             $table->string('status')->nullable();
             $table->string('type');
             $table->string('template');
+            $table->integer('order');
             $table->integer('language_id')->unsigned();
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
             $table->timestamp('published_at');

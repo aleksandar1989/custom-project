@@ -11,18 +11,25 @@ class Post extends Model
     protected $fillable = [
         'user_id',
         'title',
+        'parent_id',
         'slug',
         'content',
         'seo_title',
         'seo_description',
         'status',
         'template',
+        'order',
         'type',
         'language_id',
         'published_at',
     ];
 
     protected $dates = ['published_at']; // to be carbon instance
+    
+    private static $posts = array();
+
+    private $children = array();
+
 
 
     public function publishedAt($format) {
@@ -85,5 +92,76 @@ class Post extends Model
         $lastSlugNumber = intval(str_replace($slug . '-', '', $slugs->orderBy('created_at', 'desc')->first()->slug));
 
         return $slug . '-' . ($lastSlugNumber + 1);
+    }
+
+    /**
+     * Global get all posts
+     * @return array
+     */
+    public static function getPosts($type, $language = null) {
+        echo $language;
+        self::getPostsLeveled($type, 0, 0, $language);
+        $returnPosts = self::$posts;
+        // empty self posts
+        self::$posts = array();
+        return $returnPosts;
+    }
+
+    /**
+     * Private get all terms leveled
+     * @param int $parent
+     * @param int $level
+     * @return bool
+     */
+    private static function getPostsLeveled($type = 'post', $parent = 0, $level = 0, $language = null) {
+        if($language == null)
+            $language = language();
+
+        $items = self::where('parent_id', $parent)
+            ->where('type', $type)
+            ->where('language_id', $language)
+            ->get();
+
+        if($items->count()) {
+            foreach($items as $item) {
+                $post = array(
+                    'id' => $item->id,
+                    'title' => $item->title,
+                    'level' => $level
+                );
+
+                self::$posts[] = $post;
+                self::getPostsLeveled($type, $item->id, $level + 1, $language);
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getChildren($withItself = false) {
+        // add itself in array
+        if($withItself)
+            $this->children[] = $this->id;
+
+        $this->getChildrenIds($this->id);
+        return $this->children;
+    }
+
+    /**
+     * Private get all children arrayed
+     * @param $parent_id
+     */
+    private function getChildrenIds($parent_id) {
+        $children = self::where('parent_id', $parent_id)->get();
+
+        if($children) {
+            foreach($children as $child) {
+                $this->children[] = $child->id;
+
+                if(self::where('parent_id', $child->id)->count()) {
+                    $this->getChildrenIds($child->id);
+                }
+            }
+        }
     }
 }

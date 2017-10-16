@@ -12,7 +12,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 if (! function_exists('locale')) {
     function locale()
     {
-        return app()->getLocale();
+        return LaravelLocalization::getCurrentLocale();
     }
 }
 
@@ -52,10 +52,16 @@ if (! function_exists('languageById')) {
 if (! function_exists('language')) {
     function language($action = 'id')
     {
-        if($action == 'id') {
-            return Language::where('code', locale())->first()->id;
-        } else if($action == 'code') {
-            return Language::where('code', locale())->first()->code;
+        if(!Redis::get('language_' . Session::getId())) {
+            Redis::set('language_' . Session::getId(), 1);
         }
+
+        if($action == 'id') {
+            return Redis::get('language_' . Session::getId());
+        } else if($action == 'code') {
+            $lang = language::findOrFail(Redis::get('language_' . Session::getId()));
+            return $lang->code;
+        }
+
     }
 }

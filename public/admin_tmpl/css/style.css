@@ -339,3 +339,9 @@ input[type=number]::-webkit-outer-spin-button {
 .translates_listing_page .delete_key button{
     margin-top: 3px;
 }
+.language_select a:focus, .language_select a:hover{
+    background-color: transparent !important;
+}
+.create_post_page .sidebar .sidebar_item .order_input{
+    width: 100%;
+}
