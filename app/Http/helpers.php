@@ -5,7 +5,7 @@
  */
 use App\Language;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
+use \Illuminate\Support\Facades\Redis;
 /**
  * Get locale language
  */
