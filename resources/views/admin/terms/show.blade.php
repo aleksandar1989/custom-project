@@ -26,7 +26,7 @@
                     <div class="box-body">
                         @include('admin.terms.form')
                     </div><!-- /.box-body -->
-
+  
                     <div class="box-footer">
                         <button type="submit" class="btn green">Add New Category</button>
                     </div>
