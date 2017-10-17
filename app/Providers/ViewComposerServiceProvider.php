@@ -69,7 +69,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                     break;
                 case 'category':
                     // get templates
-                    $files = File::allFiles(resource_path('views/themes/'. env('DEFAULT_THEME') . '/' . $type));
+                    $files = File::allFiles(resource_path('views/themes/'. getenv('DEFAULT_THEME') . '/' . $type));
                     break;
                 case 'edit':
                     switch($type) {
