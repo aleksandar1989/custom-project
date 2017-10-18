@@ -15,6 +15,6 @@ class TermsController extends Controller
         $cat_slug = end($categories);
         // get current category
         $term = Term::where('slug', $cat_slug)->first();
-        return view('themes.laracus.terms.' . $term->template, compact('term'));
-}
+        return view('themes.'. env('DEFAULT_THEME') .'.terms.' . $term->template, compact('term'));
+    }
 }

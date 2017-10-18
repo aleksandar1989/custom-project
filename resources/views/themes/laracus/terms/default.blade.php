@@ -31,4 +31,4 @@
 
 @section('title'){{ $term->name }}@endsection
 
-@section('description'){{ $term->taxonomy->description ? $term->taxonomy->description : settings('description') }}@endsection
+@section('description'){{ $term->taxonomy->description }}@endsection
