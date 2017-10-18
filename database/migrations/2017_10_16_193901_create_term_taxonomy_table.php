@@ -19,7 +19,7 @@ class CreateTermTaxonomyTable extends Migration
             $table->foreign('term_id')->references('id')->on('terms')->onDelete('cascade');
             $table->integer('parent_id')->unsigned();
             $table->string('taxonomy');
-            $table->text('description');
+            $table->text('description')->nullable();;
             $table->integer('language_id')->unsigned();
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
             $table->timestamps();

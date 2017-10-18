@@ -1,9 +1,7 @@
-#users_table thead tr th:after{
+#users_table thead tr th:after, #pages_table thead tr th:after, #category_table thead tr th:after{
     display: none;
 }
-#pages_table thead tr th:after{
-    display: none;
-}
+
 .label-success{
     background: #26C281;
 }
@@ -344,4 +342,22 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .create_post_page .sidebar .sidebar_item .order_input{
     width: 100%;
+}
+.category_manage_page .dt-buttons{
+    display: none;
+}
+.link_submit_btn{
+    padding: 8px 16px;
+    color: #6f6f6f;
+    display: block;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    outline: none;
+}
+.link_submit_btn:hover, .link_submit_btn:focus{
+    text-decoration: none;
+    color: #262626;
+    background-color: #f6f6f6;
 }

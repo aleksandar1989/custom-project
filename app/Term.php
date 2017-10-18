@@ -13,7 +13,28 @@ class Term extends Model
     ];
     
     private static $terms = array();
-    
+
+    private $parentsPath = array();
+
+    private $parent;
+
+    /**
+     * Get taxonomy
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taxonomy() {
+        return $this->hasOne('App\TermTaxonomy');
+    }
+
+    /**
+     * Get all children
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children() {
+        return $this->belongsToMany('App\Term', 'term_taxonomy', 'parent_id');
+    }
+
+
     /**
      * Global get all terms
      * @return array
@@ -48,6 +69,52 @@ class Term extends Model
                 self::$terms[] = $category;
                 self::getTermsLeveled($taxonomy, $item->term->id, $level + 1);
             }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Get term url
+     * @return mixed
+     */
+    public function url() {
+        // empty parents path
+        $this->parentsPath = array();
+        $parent = $this->find($this->taxonomy->parent_id);
+
+        if($parent) {
+            $this->parentsPath($parent);
+
+            $this->parentsPath = array_reverse($this->parentsPath);
+
+            $this->parentsPath[] = $this->slug;
+
+            return '/category/' . implode('/', $this->parentsPath);
+        } else {
+
+            return '/category/' . $this->slug;
+        }
+    }
+
+    /**
+     * Delete post and synchronize usages
+     * @return bool
+     * @throws \Exception
+     */
+    public function syncDelete() {
+        // get parent id
+        $parentId = $this->taxonomy->parent_id;
+
+        if($this->delete()) {
+            // change parent_id for children
+            foreach($this->children as $child) {
+                $child->taxonomy()->update([
+                    'parent_id' => $parentId
+                ]);
+            }
+
+            return true;
         } else {
             return false;
         }

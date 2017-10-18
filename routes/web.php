@@ -65,7 +65,8 @@ Route::group([
 ], function() {
 //  Home route
     Route::get('/', 'HomeController@index');
-
+    // Category route
+    Route::get('/category/{term?}', 'TermsController@show')->where('term', '(.*)');
 
 });
 //facebook socialite.

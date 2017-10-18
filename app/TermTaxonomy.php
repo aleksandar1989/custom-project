@@ -29,4 +29,31 @@ class TermTaxonomy extends Model
     public function term() {
         return $this->belongsTo('App\Term', 'term_id', 'id');
     }
+
+    public function getChildren($withItself = false) {
+        // add itself in array
+        if($withItself)
+            $this->children[] = $this->term_id;
+
+        $this->getChildrenIds($this->term_id);
+        return $this->children;
+    }
+
+    /**
+     * private get all children arrayed
+     * @param $parent_id
+     */
+    private function getChildrenIds($parent_id) {
+        $children = TermTaxonomy::where('parent_id', $parent_id)->get();
+
+        if($children) {
+            foreach($children as $child) {
+                $this->children[] = $child->term_id;
+
+                if(TermTaxonomy::where('parent_id', $child->term_id)->count()) {
+                    $this->getChildrenIds($child->term_id);
+                }
+            }
+        }
+    }
 }

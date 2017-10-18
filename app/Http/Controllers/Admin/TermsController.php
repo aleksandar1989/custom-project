@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\TermRequest;
 use App\Term;
+use App\TermTaxonomy;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,9 +28,29 @@ class TermsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TermRequest $request)
     {
-        //
+        // create new term
+        $terms = Term::create([
+            'name' => $request->input('name'),
+            'slug' => $request->input('slug'),
+            'template' => $request->input('template')
+        ]);
+
+        // create taxonomy for term
+        $terms->taxonomy()->create([
+            'parent_id' => $request->input('parent'),
+            'taxonomy' => $request->input('taxonomy'),
+            'description' => $request->input('description'),
+            'language_id' => language()
+        ]);
+
+        $notification = array(
+            'message' => 'Category is successfully created!',
+            'type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -53,19 +75,55 @@ class TermsController extends Controller
      */
     public function edit($id)
     {
-        //
+        // get term by id
+        $term = Term::find($id);
+
+        // get taxonomy
+        $taxonomy = $term->taxonomy->taxonomy;
+
+        // get all categories leveled
+        $categories = Term::getTerms($taxonomy);
+
+        return view('admin.terms.edit', compact('categories', 'term'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Update Category
+     * @param TermRequest $request
+     * @param $id
      */
-    public function update(Request $request, $id)
+    public function update(TermRequest $request, $id)
     {
-        //
+        // get term by id
+        $term = Term::find($id);
+
+        $term->name = $request->input('name');
+        $term->template = $request->input('template');
+
+        if($request->input('slug') != $term->slug)
+            $term->slug = $request->input('slug');
+
+        if($term->save()) {
+
+            // get term taxonomy by term_id
+            $taxonomy = TermTaxonomy::where('term_id', $id)->first();
+            $taxonomy->parent_id = $request->input('parent');
+            $taxonomy->description = $request->input('description');
+
+            $taxonomy->save();
+
+            $message = [
+                'message' => 'The category has been updated.',
+                'type' => 'success'
+            ];
+        } else {
+            $message = [
+                'message' => 'The category has not been updated.',
+                'type' => 'danger'
+            ];
+        }
+
+        return redirect()->back()->with($message);
     }
 
     /**
@@ -76,6 +134,22 @@ class TermsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // get term by id
+        $term = Term::find($id);
+
+        // delete term
+        if($term->syncDelete()) {
+            $message = [
+                'message' => 'Category has been deleted.',
+                'type' => 'success'
+            ];
+        } else {
+            $message = [
+                'message' => 'Category has not been deleted.',
+                'type' => 'danger'
+            ];
+        }
+
+        return redirect()->back()->with($message);
     }
 }

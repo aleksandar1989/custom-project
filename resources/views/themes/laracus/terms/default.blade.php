@@ -1,4 +1,4 @@
-@extends('app')
+@extends('themes.laracus.layouts.app')
 
 @section('content')
     <div class="container">
