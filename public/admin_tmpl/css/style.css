@@ -342,6 +342,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .create_post_page .sidebar .sidebar_item .order_input{
     width: 100%;
+    outline: none;
 }
 .category_manage_page .dt-buttons{
     display: none;
@@ -360,4 +361,18 @@ input[type=number]::-webkit-outer-spin-button {
     text-decoration: none;
     color: #262626;
     background-color: #f6f6f6;
+}
+.select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection{
+    box-shadow: none;
+}
+.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice{
+    margin: 8px 5px 0 0px;
+}
+.select2-selection__choice{
+    color: #ffffff !important;
+    background-color: #9c8f3d !important;
+    border-color: #7f7532 !important;
+}
+.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice__remove{
+    color: #fff;
 }

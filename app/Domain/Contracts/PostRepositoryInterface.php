@@ -15,6 +15,13 @@ interface PostRepositoryInterface
     public function create(array $attributes);
 
     /**
+     * Get Post by ID
+     * @param int $postId
+     * @return Post
+     */
+    public function getById($postId);
+
+    /**
      * @param $postId
      * @param array $attributes
      * @return bool

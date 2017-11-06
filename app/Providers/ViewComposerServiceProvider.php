@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Post;
 use App\Role;
+use App\Term;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
@@ -20,6 +21,7 @@ class ViewComposerServiceProvider extends ServiceProvider
         $this->composeDropdownRoles('admin.users.form');
         $this->composeAttributes('admin.terms.form');
         $this->composeAttributes('admin.posts.form.attributes_box');
+        $this->composeCategories('admin.posts.form.box_categories');
     }
 
     /**
@@ -108,4 +110,17 @@ class ViewComposerServiceProvider extends ServiceProvider
             $view->with(compact('templates', 'postsLeveled'));
         });
     }
+
+    /**
+     * Compose Categories
+     */
+    private function composeCategories($action) {
+        view()->composer($action, function($view){
+            // get categories
+            $categories = Term::getTerms('category');
+
+            $view->with(compact('categories'));
+        });
+    }
+
 }

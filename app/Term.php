@@ -98,6 +98,14 @@ class Term extends Model
     }
 
     /**
+     * Get all posts
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function posts() {
+        return $this->belongsToMany('App\Post');
+    }
+
+    /**
      * Delete post and synchronize usages
      * @return bool
      * @throws \Exception

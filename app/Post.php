@@ -148,6 +148,14 @@ class Post extends Model
     }
 
     /**
+     * Get all post categories
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function terms() {
+        return $this->belongsToMany('App\Term');
+    }
+
+    /**
      * Private get all children arrayed
      * @param $parent_id
      */
@@ -163,5 +171,24 @@ class Post extends Model
                 }
             }
         }
+    }
+
+    /**
+     * Get post relation by language
+     * @param $language
+     * @return string
+     */
+    public function relation($language) {
+        $relation = $this->hasMany('App\PostRelation', 'post_id')->where('language', $language)->first();
+        return Post::find($relation->post_relation_id);
+    }
+
+    /**
+     * Check if post has relation
+     * @param $language
+     * @return mixed
+     */
+    public function hasRelation($language) {
+        return $this->hasMany('App\PostRelation', 'post_id')->where('language', $language)->count();
     }
 }

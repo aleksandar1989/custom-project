@@ -40,6 +40,14 @@ class PostRepository implements PostRepositoryInterface
     /**
      * @inheritdoc
      */
+    public function getById($postId)
+    {
+        return $this->model->find($postId);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function delete($postId) {
         return $this->model->findOrFail($postId)->delete();
     }
