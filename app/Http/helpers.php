@@ -6,6 +6,18 @@
 use App\Language;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use \Illuminate\Support\Facades\Redis;
+
+
+/**
+ * Get theme View
+ */
+if (! function_exists('themeView')) {
+    function themeView($asset)
+    {
+        return  '/themes/'. env('DEFAULT_THEME') .'/'. $asset;
+    }
+}
+
 /**
  * Get locale language
  */

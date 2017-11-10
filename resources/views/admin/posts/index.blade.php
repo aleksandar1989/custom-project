@@ -10,15 +10,15 @@
 @section('content')
     <div class="users_listing_page">
         <!-- BEGIN PAGE TITLE-->
-        <h1 class="page-title"> Manage Pages
-            <small>Here you can create, edit and delete pages</small>
+        <h1 class="page-title"> Manage {{ $type }}
+            <small>Here you can create, edit and delete {{ $type }}</small>
         </h1>
         <!-- END PAGE TITLE-->
 
         <div class="clearfix add_user_box">
             <div class="col-md-6">
                 <div class="btn-group">
-                    <a href="{{ url('/admin/pages/create') }}" class="btn sbold green"><i class="fa fa-plus"></i> Add New Page</a>
+                    <a href="{{ url('/admin/'. $type .'s/create') }}" class="btn sbold green add_btn"><i class="fa fa-plus"></i> Add New {{ $type }}</a>
                 </div>
             </div>
         </div>
@@ -36,6 +36,7 @@
                     <tr>
                         <th> Title </th>
                         <th>Author</th>
+                        <th>Categories</th>
                         <th>Published at</th>
                         <th> Actions </th>
                     </tr>
@@ -47,6 +48,14 @@
                                 <td> {{ $post->title }} </td>
                                 <td class="author"><a href="/admin/users/{{ $post->user->id }}/edit">{{ $post->user->name }}</a></td>
                                 <td>
+                                    @if($post->terms->count())
+                                        @foreach($post->terms as $key => $term)
+                                            {{ $key != 0 ? ', ' : '' }}
+                                            <a href="/admin/terms/{{ $term->id }}/edit">{{ $term->name }}</a>
+                                        @endforeach
+                                    @endif
+                                </td>
+                                <td>
                                     {{ $post->published_at }}
                                 </td>
                                 <td>
@@ -57,19 +66,19 @@
                                         <ul class="dropdown-menu pull-left" role="menu">
                                             <li>
                                                 <a href="{{ url("admin/posts/$post->id/edit") }}">
-                                                    <i class="fa fa-file-text"></i> Edit Page </a>
+                                                    <i class="fa fa-file-text"></i> Edit {{ $type }} </a>
                                             </li>
                                             <li>
                                                 <a href="javascript:void(0);" onclick="postDelete(this);" >
                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id]]) !!}
-                                                    <i class="fa fa-trash"></i> Delete Page
+                                                    <i class="fa fa-trash"></i> Delete {{ $type }}
                                                     {!! Form::close() !!}
                                                 </a>
                                             </li>
                                             <li class="divider"> </li>
                                             <li>
                                                 <a href="{{ url("/$post->slug") }}">
-                                                    <i class="fa fa-link"></i> Preview Page </a>
+                                                    <i class="fa fa-link"></i> Preview {{ $type }} </a>
                                             </li>
                                         </ul>
                                     </div>

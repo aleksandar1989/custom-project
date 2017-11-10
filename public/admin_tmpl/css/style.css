@@ -1,4 +1,4 @@
-#users_table thead tr th:after, #pages_table thead tr th:after, #category_table thead tr th:after{
+#users_table thead tr th:after, #pages_table thead tr th:after, #category_table thead tr th:after, #news_table thead tr th:after{
     display: none;
 }
 
@@ -15,6 +15,9 @@
 }
 .users_listing_page .add_user_box{
     margin: 10px 0;
+}
+.users_listing_page .add_btn, .users_listing_page .dropdown-menu li a{
+    text-transform: capitalize;
 }
 .user_create_page .portlet{
     max-width: 600px;
@@ -208,6 +211,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .create_post_page .sidebar_item{
     margin-bottom: 50px;
+}
+.create_post_page .sidebar_item .language_title{
+    margin-bottom: 10px;
+}
+.create_post_page .sidebar_item .fill-data{
+    margin-top: 5px;
 }
 .create_post_page .sidebar_item:last-child{
     margin-bottom: 0px;

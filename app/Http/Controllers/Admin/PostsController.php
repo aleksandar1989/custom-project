@@ -33,7 +33,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        // get all posts
+        $type = "post";
+        $posts = Post::where('type', 'post')->where('language_id', language())->get();
+        return view('admin.posts.index', compact('posts', 'type'));
     }
 
     /**
@@ -95,7 +98,15 @@ class PostsController extends Controller
      */
     public function update($id, PostRequest $request)
     {
-        $this->service->update($id, $request->all());
+        // get post
+        $post = Post::find($id);
+
+        if($request->input('slug') != $post->slug) {
+            $this->service->update($id, $request->all());
+        }else{
+            $this->service->update($id, $request->except(['slug']));
+        }
+
         return redirect('admin/posts/' . $id . '/edit')->with(['message' => 'Post has been updated.',  'type' => 'success']);
     }
 

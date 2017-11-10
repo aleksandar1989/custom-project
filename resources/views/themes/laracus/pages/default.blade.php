@@ -1,4 +1,4 @@
-@extends('themes.laracus.layouts.app')
+@extends(themeView('layouts.app'))
 @section('title'){{ $post->seo_title ? $post->seo_title : $post->title }}@endsection
 @section('description'){{ $post->seo_description }}@endsection
 

@@ -4,7 +4,7 @@
         @foreach(locales() as $code => $name)
             @if($code != language('code'))
                 <div class="form-group">
-                    <h3>{{ $name }}</h3>
+                    <p class="language_title">{{ $name }}</p>
                     <select name="relation[{{ $code }}]" class="form-control relation-posts">
                         <option value="">No relation...</option>
                         @if($postsLeveled = App\Post::getPosts($postType, languageIdByCode($code)))
@@ -18,7 +18,7 @@
                             @endforeach
                         @endif
                     </select>
-                    <button type="button" class="btn btn-block btn-primary btn-xs pull-right fill-data" data-lng="{{ $code }}">Fill data from selected post</button>
+                    <button type="button" class=" btn green btn-xs pull-right fill-data" data-lng="{{ $code }}">Fill data from selected post</button>
                 </div>
             @endif
         @endforeach

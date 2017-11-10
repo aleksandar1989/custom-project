@@ -20,6 +20,10 @@
 
             @include('admin.posts.form.attributes_box')
 
+            @include('admin.posts.form.box_image')
+
         </div>
     </div>
 </div>
+
+@include('admin.posts.form.assets')

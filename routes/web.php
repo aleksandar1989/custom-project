@@ -44,6 +44,8 @@ Route::group([
     Route::get('/pages/create', 'PagesController@create');
     Route::get('/pages', 'PagesController@index');
 
+    // Admin Medias
+    Route::resource('/media', 'MediasController');
     //  Posts
     Route::resource('/posts', 'PostsController');
     // Admin Search
@@ -56,6 +58,12 @@ Route::group([
     Route::resource('/translate-words', 'TranslateWordsController');
     // Admin Terms
     Route::resource('/terms', 'TermsController');
+    // Show posts for current category
+    Route::get('/terms/{id}/posts', 'TermsController@posts');
+    // Ajax media
+    Route::post('/ajax/media/', 'Ajax\MediasController@init');
+    // Ajax Posts
+    Route::post('/ajax/posts/', 'Ajax\PostsController@init');
 });
 
 

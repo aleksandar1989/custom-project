@@ -1,4 +1,4 @@
-@extends('app')
+@extends(themeView('layouts.app'))
 
 @section('content')
 
@@ -13,7 +13,7 @@
 
                     <div class="inner">
 
-                        {!! $render->compile($post->content) !!}
+                        {!! $post->content !!}
 
                     </div>
 
@@ -24,11 +24,8 @@
         </div>
     </div>
 
-    @include('partials.newsletter')
 
-    @if($post->hasMeta('sidebar_download_1') || $post->hasMeta('sidebar_contact_1'))
-        @include('partials.right_sidebar')
-    @endif
+
 
 @endsection
 
@@ -37,5 +34,5 @@
 @section('description'){{ $post->seo_description }}@endsection
 
 @section('footer')
-    <script src="{{ themeAssets('js/right-sidebar.js') }}"></script>
+    <script src="{{ asset('front/js/custom.js') }}" type="text/javascript"></script>
 @endsection

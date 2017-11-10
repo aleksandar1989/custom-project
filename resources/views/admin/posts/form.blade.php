@@ -26,6 +26,13 @@
 
             <!-- Relations box -->
             @include('admin.posts.form.box_relations')
+
+            <!-- Media -->
+            @include('admin.posts.form.box_image')
+
         </div>
     </div>
 </div>
+
+<!-- Assets -->
+@include('admin.posts.form.assets')

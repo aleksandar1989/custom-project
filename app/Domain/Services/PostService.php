@@ -43,7 +43,7 @@ class PostService
             $post->terms()->sync($attributes['categories']);
         }
 
-        if($attributes['relation']) {
+        if(isset($attributes['relation'])) {
             // get this post language
             $relation_lng = Language::find($post->language_id);
 
@@ -100,7 +100,7 @@ class PostService
             }
         }
 
-        if($attributes['relation']) {
+        if(isset($attributes['relation'])) {
             // get this post language
             $relation_lng = Language::find($post->language_id);
 

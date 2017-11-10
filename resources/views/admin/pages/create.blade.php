@@ -1,9 +1,6 @@
 @extends('admin.app')
 @section('title') Create Page @endsection
 
-@section('header')
-    <link href="{{ asset('admin_tmpl/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
-@endsection
 
 @section('content')
     <div class="create_post_page">
@@ -13,14 +10,9 @@
         {!! Form::close() !!}
     </div>
 
+    <!-- Media -->
+    @include('admin.modals.media')
+    <!-- Cropper -->
+    @include('admin.modals.cropper')
 @endsection
 
-@section('footer')
-    <script src="{{ asset('admin_tmpl/plugins/tinymce/tinymce.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin_tmpl/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin_tmpl/js/components-date-time-pickers.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin_tmpl/plugins/input-mask/jquery.inputmask.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin_tmpl/plugins/input-mask/jquery.inputmask.date.extensions.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin_tmpl/plugins/input-mask/jquery.inputmask.extensions.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin_tmpl/js/post.js') }}" type="text/javascript"></script>
-@endsection

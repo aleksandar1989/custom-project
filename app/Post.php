@@ -17,6 +17,7 @@ class Post extends Model
         'seo_title',
         'seo_description',
         'status',
+        'media_id',
         'template',
         'order',
         'type',
@@ -105,6 +106,38 @@ class Post extends Model
         // empty self posts
         self::$posts = array();
         return $returnPosts;
+    }
+
+    /**
+     * Get media
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function media() {
+        return $this->belongsTo('App\Media');
+    }
+
+    /**
+     * Get post image
+     * @return string
+     */
+    public function image() {
+        $media = $this->media;
+
+        if($media) {
+            return $media->image();
+        }
+    }
+
+    /**
+     * Get post thumbnail
+     * @return string
+     */
+    public function thumbnail() {
+        $media = $this->media;
+
+        if($media) {
+            return $media->thumbnail();
+        }
     }
 
     /**
