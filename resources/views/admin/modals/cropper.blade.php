@@ -54,12 +54,12 @@
                 <div class="row">
                     <div class="col-md-9 docs-buttons">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="move" title="Move">
+                            <button type="button" class="btn yellow-mint" data-method="setDragMode" data-option="move" title="Move">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Move">
                                   <span class="fa fa-arrows"></span>
                                 </span>
                             </button>
-                            <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="crop" title="Crop">
+                            <button type="button" class="btn yellow-mint" data-method="setDragMode" data-option="crop" title="Crop">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Crop">
                                   <span class="fa fa-crop"></span>
                                 </span>
@@ -67,12 +67,12 @@
                         </div>
 
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                            <button type="button" class="btn yellow-mint" data-method="zoom" data-option="0.1" title="Zoom In">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Zoom In">
                                   <span class="fa fa-search-plus"></span>
                                 </span>
                             </button>
-                            <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                            <button type="button" class="btn yellow-mint" data-method="zoom" data-option="-0.1" title="Zoom Out">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Zoom Out">
                                   <span class="fa fa-search-minus"></span>
                                 </span>
@@ -80,22 +80,22 @@
                         </div>
 
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Move Left">
+                            <button type="button" class="btn yellow-mint" data-method="move" data-option="-10" data-second-option="0" title="Move Left">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Move Left">
                                   <span class="fa fa-arrow-left"></span>
                                 </span>
                             </button>
-                            <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Move Right">
+                            <button type="button" class="btn yellow-mint" data-method="move" data-option="10" data-second-option="0" title="Move Right">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Move Right">
                                   <span class="fa fa-arrow-right"></span>
                                 </span>
                             </button>
-                            <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Move Up">
+                            <button type="button" class="btn yellow-mint" data-method="move" data-option="0" data-second-option="-10" title="Move Up">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Move Up">
                                   <span class="fa fa-arrow-up"></span>
                                 </span>
                             </button>
-                            <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Move Down">
+                            <button type="button" class="btn yellow-mint" data-method="move" data-option="0" data-second-option="10" title="Move Down">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Move Down">
                                   <span class="fa fa-arrow-down"></span>
                                 </span>
@@ -103,12 +103,12 @@
                         </div>
 
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                            <button type="button" class="btn yellow-mint" data-method="rotate" data-option="-45" title="Rotate Left">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Rotate Left">
                                   <span class="fa fa-rotate-left"></span>
                                 </span>
                             </button>
-                            <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+                            <button type="button" class="btn yellow-mint" data-method="rotate" data-option="45" title="Rotate Right">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Rotate Right">
                                   <span class="fa fa-rotate-right"></span>
                                 </span>
@@ -116,12 +116,12 @@
                         </div>
 
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Flip Horizontal">
+                            <button type="button" class="btn yellow-mint" data-method="scaleX" data-option="-1" title="Flip Horizontal">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Flip Horizontal">
                                   <span class="fa fa-arrows-h"></span>
                                 </span>
                             </button>
-                            <button type="button" class="btn btn-primary" data-method="scaleY" data-option="-1" title="Flip Vertical">
+                            <button type="button" class="btn yellow-mint" data-method="scaleY" data-option="-1" title="Flip Vertical">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Flip Vertical">
                                   <span class="fa fa-arrows-v"></span>
                                 </span>
@@ -129,12 +129,12 @@
                         </div>
 
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
+                            <button type="button" class="btn yellow-mint" data-method="reset" title="Reset">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Reset">
                                   <span class="fa fa-refresh"></span>
                                 </span>
                             </button>
-                            <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+                            <label class="btn yellow-mint btn-upload" for="inputImage" title="Upload image file">
                                 <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
                                 <span class="docs-tooltip" data-toggle="tooltip" title="Import">
                                   <span class="fa fa-upload"></span>
@@ -152,7 +152,7 @@
         </div>
         <div class="modal-footer docs-buttons">
             <button type="button" class="btn btn-outline pull-left" data-remodal-action="cancel">Close</button>
-            <button type="button" class="btn btn-outline" data-method="getCroppedCanvas">Save</button>
+            <button type="button" class="btn green" data-method="getCroppedCanvas">Save</button>
         </div>
     </div>
 </div>

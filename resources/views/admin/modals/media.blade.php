@@ -24,8 +24,8 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-outline pull-left" data-remodal-action="cancel">Close</button>
             <input type="text" class="form-control pull-left" id="image_src" value="" style="max-width: 200px; margin-left: 10px;">
-            <button type="button" class="btn btn-outline pull-right" id="media_confirm_btn" data-remodal-action="confirm">Insert into post</button>
-            <button type="button" class="btn btn-warning pull-right" id="edit_media">Edit</button>
+            <button type="button" class="btn green pull-right" id="media_confirm_btn" data-remodal-action="confirm">Insert into post</button>
+            <button type="button" class="btn yellow-mint pull-right" id="edit_media">Edit</button>
         </div>
     </div>
 </div>
