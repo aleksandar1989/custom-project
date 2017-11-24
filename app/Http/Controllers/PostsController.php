@@ -22,6 +22,10 @@ class PostsController extends Controller
         // get post by slug
         $post = Post::where('slug', $post_slug)->first();
 
-        return view('themes/laracus/'.$post->type . 's.' . $post->template, compact('post'));
+        if($post){
+            return view('themes/laracus/'.$post->type . 's.' . $post->template, compact('post'));
+        } else{
+            abort(404);
+        }
     }
 }
