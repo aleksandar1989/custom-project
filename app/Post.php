@@ -17,6 +17,7 @@ class Post extends Model
         'seo_title',
         'seo_description',
         'status',
+        'media_id',
         'template',
         'order',
         'type',
@@ -108,6 +109,38 @@ class Post extends Model
     }
 
     /**
+     * Get media
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function media() {
+        return $this->belongsTo('App\Media');
+    }
+
+    /**
+     * Get post image
+     * @return string
+     */
+    public function image() {
+        $media = $this->media;
+
+        if($media) {
+            return $media->image();
+        }
+    }
+
+    /**
+     * Get post thumbnail
+     * @return string
+     */
+    public function thumbnail() {
+        $media = $this->media;
+
+        if($media) {
+            return $media->thumbnail();
+        }
+    }
+
+    /**
      * Private get all terms leveled
      * @param int $parent
      * @param int $level
@@ -148,6 +181,14 @@ class Post extends Model
     }
 
     /**
+     * Get all post categories
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function terms() {
+        return $this->belongsToMany('App\Term');
+    }
+
+    /**
      * Private get all children arrayed
      * @param $parent_id
      */
@@ -163,5 +204,24 @@ class Post extends Model
                 }
             }
         }
+    }
+
+    /**
+     * Get post relation by language
+     * @param $language
+     * @return string
+     */
+    public function relation($language) {
+        $relation = $this->hasMany('App\PostRelation', 'post_id')->where('language', $language)->first();
+        return Post::find($relation->post_relation_id);
+    }
+
+    /**
+     * Check if post has relation
+     * @param $language
+     * @return mixed
+     */
+    public function hasRelation($language) {
+        return $this->hasMany('App\PostRelation', 'post_id')->where('language', $language)->count();
     }
 }

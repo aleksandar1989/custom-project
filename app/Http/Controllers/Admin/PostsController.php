@@ -4,12 +4,28 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\PostRequest;
 use App\Post;
+use App\Domain\Services\PostService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
+
+    /**
+     * @var PostService
+     */
+    private $service;
+
+    /**
+     * PostsController constructor.
+     * @param PostService $service
+     */
+    public function __construct(PostService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +33,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        // get all posts
+        $type = "post";
+        $posts = Post::where('type', 'post')->where('language_id', language())->get();
+        return view('admin.posts.index', compact('posts', 'type'));
     }
 
     /**
@@ -27,7 +46,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-
+        $postType = 'page';
+        return view('admin.posts.create', compact('postType'));
     }
 
     /**
@@ -38,22 +58,7 @@ class PostsController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // create post
-        $post = Post::create([
-            'user_id' => Auth::user()->id,
-            'title' => $request->input('title'),
-            'parent_id' => $request->input('parent_id'),
-            'slug' => $request->input('slug'),
-            'content' => $request->input('content'),
-            'seo_title' => $request->input('seo_title'),
-            'seo_description' => $request->input('seo_description'),
-            'type' => $request->input('type'),
-            'template' => $request->input('template'),
-            'order' => $request->input('order') ?? 0 ,
-            'status' => '',
-            'published_at' => $request->input('published_at'),
-            'language_id' => language()
-        ]);
+        $post = $this->service->create($request->all());
 
         if($post) {
             $message = [
@@ -79,11 +84,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        // get post
-        $post = Post::find($id);
-
+        $post = $this->service->edit($id);
         $postType = $post->type;
-
         return view('admin.posts.edit', compact('post', 'postType'));
     }
 
@@ -94,36 +96,18 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, $id)
+    public function update($id, PostRequest $request)
     {
         // get post
         $post = Post::find($id);
-        // set new values
-        $post->title = $request->input('title');
-        $post->parent_id = $request->input('parent_id');
-        $post->content = $request->input('content');
-        $post->seo_title = $request->input('seo_title');
-        $post->seo_description = $request->input('seo_description');
-        $post->template = $request->input('template');
-        $post->order = $request->input('order');
-        $post->published_at = $request->input('published_at');
+
         if($request->input('slug') != $post->slug) {
-            $post->slug = $request->input('slug');
-        }
-
-        if($post->save()) {
-            $message = [
-                'message' => 'Post has been updated.',
-                'type' => 'success'
-            ];
+            $this->service->update($id, $request->all());
         }else{
-            $message = [
-                'message' => 'Post has not been updated.',
-                'type' => 'danger'
-            ];
+            $this->service->update($id, $request->except(['slug']));
         }
 
-        return redirect('admin/posts/' . $post->id . '/edit')->with($message);
+        return redirect('admin/posts/' . $id . '/edit')->with(['message' => 'Post has been updated.',  'type' => 'success']);
     }
 
     /**
@@ -134,20 +118,7 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
-
-        if($post->delete()) {
-            $message = [
-                'message' => 'Post has been deleted.',
-                'type' => 'success'
-            ];
-        } else {
-            $message = [
-                'message' => 'Post has not been deleted.',
-                'type' => 'danger'
-            ];
-        }
-
-        return redirect()->back()->with($message);
+        $this->service->delete($id);
+        return redirect()->back()->with(['message' => 'Post has been deleted.', 'type' => 'success']);
     }
 }

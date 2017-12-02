@@ -152,4 +152,18 @@ class TermsController extends Controller
 
         return redirect()->back()->with($message);
     }
+
+    /**
+     * Show posts for current category
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function posts($id) {
+        // get term by id
+        $term = Term::findOrFail($id);
+
+        $posts = $term->posts()->paginate(10);
+
+        return view('admin.terms.posts', compact('posts', 'term'));
+    }
 }

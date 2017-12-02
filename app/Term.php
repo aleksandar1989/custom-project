@@ -45,6 +45,21 @@ class Term extends Model
     }
 
     /**
+     * Get slugs of all parents and create url path
+     * @param $parent
+     */
+    private function parentsPath($parent) {
+        $this->parentsPath[] = $parent->slug;
+
+        $this->parent = $parent;
+
+        $hisParent = $this->find($parent->taxonomy->parent_id);
+
+        if($hisParent)
+            $this->parentsPath($hisParent);
+    }
+
+    /**
      * Private get all terms leveled
      * @param int $parent
      * @param int $level
@@ -95,6 +110,14 @@ class Term extends Model
 
             return '/category/' . $this->slug;
         }
+    }
+
+    /**
+     * Get all posts
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function posts() {
+        return $this->belongsToMany('App\Post');
     }
 
     /**

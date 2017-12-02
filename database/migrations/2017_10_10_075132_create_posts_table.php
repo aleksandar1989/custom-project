@@ -17,6 +17,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('media_id')->unsigned()->nullable();
+            $table->foreign('media_id')->references('id')->on('medias')->onDelete('set null');
             $table->integer('parent_id')->unsigned();
             $table->text('title');
             $table->string('slug')->unique();

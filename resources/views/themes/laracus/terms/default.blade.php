@@ -1,4 +1,4 @@
-@extends('themes.laracus.layouts.app')
+@extends(themeView('layouts.app'))
 
 @section('content')
     <div class="container">
@@ -10,7 +10,7 @@
                 <h1 class="page-header">
                     Subcategories list
                 </h1>
-
+                <div class="clearfix"></div>
                 @if($term->children->count())
                     <ul>
                         @foreach($term->children as $child)

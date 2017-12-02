@@ -50,7 +50,7 @@
             </li>
 
 
-            <li class="nav-item {{ (Request::path() == 'admin/posts' || Request::is('admin/posts/*')) ? 'active open' : '' }}">
+            <li class="nav-item {{ (Request::path() == 'admin/posts' || Request::path() == 'admin/terms/category' || Request::is('admin/posts/*')) ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-thumb-tack"></i>
                     <span class="title">Posts</span>

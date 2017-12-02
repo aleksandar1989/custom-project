@@ -1,0 +1,16 @@
+.language_box .language_flag, .language_box #lanNavSel{
+    display: inline-block;
+    vertical-align: middle;
+}
+.language_box .language_flag{
+    margin-right: 3px;
+}
+.language_box ul{
+    padding: 0px;
+    min-width: 100%;
+    border: none;
+}
+.language_box ul li a{
+    padding: 10px 15px;
+    text-align: center;
+}
